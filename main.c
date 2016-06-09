@@ -38,16 +38,16 @@ struct Time tid;
 struct Ball{
 struct Pos pos;
 struct Pos speed;
-}
+};
 struct Striker{
 struct Pos pos;
 char size;
-}
+};
 struct Klods{
 struct Pos pos;
 char liv;
 char farve;
-}
+};
 
 
 
@@ -60,8 +60,10 @@ void main() {
 	EI();
 		
 	color(2,0);
+	printf("%c[?25l",0x1B);
 	clrscr();
 	window(5,5,60,18,"Stop",1);
+
 	window(7,7,58,16,"Watch",0);
 window(10,10,90,50,"hejsa",1);
 	LEDinit();
@@ -91,19 +93,49 @@ window(10,10,90,50,"hejsa",1);
 void menu(){
 }
 void spil(){
-static Ball ball;
+char frame;
+
+struct Ball ball;
+int oldx;
+int oldy;
+clrscr();
+	window(1,1,102,52,"Reflexball",1);
 ball.pos.x=5000;
 ball.pos.y=5000;
-ball.speed.x=100;
-ball.speed.y=200;
+ball.speed.x=200;
+ball.speed.y=300;
 
-while(1!=2){
-
+	while(1!=2){
+		if(tid.ms%50==0 && frame==0){
+		oldx=ball.pos.x;
+		oldy=ball.pos.y;
+			ball.pos.x+=ball.speed.x;
+			ball.pos.y+=ball.speed.y;
+			if(ball.pos.x<0&&ball.speed.x<0 || ball.pos.x>10000&&ball.speed.x>0){
+				ball.speed.x=-ball.speed.x;
+			}
+			if(ball.pos.y<0&&ball.speed.y<0 || ball.pos.y>10000&&ball.speed.y>0){
+				ball.speed.y=-ball.speed.y;
+			}
+		
+	if(oldy!=ball.pos.y && oldx!=ball.pos.x){
+		gotoxy(oldx/100,oldy/200);
+				printf(" ");	
+				}
+	gotoxy(ball.pos.x/100,ball.pos.y/200);
+			printf("%c",219);
+			
+			frame=1;
+		}
+		else{
+			frame=0;
+		}
+		
+		
+	}
 
 }
 
-
-}
 void pause(){
 }
 
