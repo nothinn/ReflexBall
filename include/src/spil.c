@@ -1,3 +1,26 @@
+#include <string.h>
+#include <eZ8.h>             // special encore constants, macros and flash routines
+#include <sio.h>  
+#include "ansi.h"
+#include "sin.h"
+#include "LED.h"
+#include "spil.h"
+#include "main.h"
+#define FIX14_SHIFT 14
+#define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
+#define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
+//Lort
+struct Pos{
+int x,y;
+};
+struct Striker{
+struct Pos pos;
+int size;
+};
+
+
+//Test test altså ikke koden!
+
 void runStriker(struct Striker * striker,char push){
 	char i;
 	push = readkey();
@@ -26,12 +49,7 @@ void runStriker(struct Striker * striker,char push){
 
 void spil(){
 	char push, i;
-	static struct Ball ball;
 	static struct Striker striker;
-	ball.pos.x=5000;
-	ball.pos.y=5000;
-	ball.speed.x=100;
-	ball.speed.y=200;
 	striker.pos.x=5000;
 	striker.pos.y=10000;
 	striker.size=10;

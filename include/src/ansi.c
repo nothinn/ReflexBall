@@ -3,7 +3,7 @@
 #include <string.h>
 
 #define ESC 0x1B
-
+//Lort
 void fgcolor(int foreground) {
 /*  Value      foreground     Value     foreground
     ------------------------------------------------

@@ -7,7 +7,7 @@ void drawBall(struct Ball ball);
 void drawStriker(struct Striker striker);
 void drawLife(int i);
 void drawWindow();
-
+//Lort
 
 void drawKlods(struct Klods klods){
 	int i;
