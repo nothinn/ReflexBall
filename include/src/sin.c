@@ -6,7 +6,7 @@
 //	(comments, kudos, flames to daytshen@hotmail.com)
 //
 // =====================================================================
-
+//Lort
 #include "sin.h"
 // -----------------------------------------------------------------------
 // SIN: a 512 long LUT of 16bit values in 2.14 format
@@ -85,4 +85,15 @@ const signed short SIN[512]=
 	0xF384,0xF449,0xF50F,0xF5D5,0xF69C,0xF763,0xF82A,0xF8F2,
 	0xF9BA,0xFA82,0xFB4B,0xFC13,0xFCDC,0xFDA5,0xFE6E,0xFF37,
 };
+
+int sin(int g512){
+int a =g512&0x1ff;
+if(a<0)
+a+=512;
+return SIN[a];
+}
+
+int cos(int g512){
+return sin(g512+128);
+}
 
