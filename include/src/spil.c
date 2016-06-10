@@ -58,6 +58,7 @@ ball.pos.x=5000;
 ball.pos.y=5000;
 ball.speed.x=10;
 ball.speed.y=70;
+ball.angle=74;
 	
 	
 	striker.pos.x=5000;
@@ -116,6 +117,7 @@ if( ball->pos.y>7000 && ball->speed.y>0 && ball->pos.x>striker->pos.x-r && ball-
 delta=ball->pos.x-striker->pos.x-r;
 	if(delta >0 && delta<r*2*1/5){
 		ball->speed.y=-ball->speed.y;
+			ball->speed.x;
 		}
 		else if( delta<r*2*2/5){
 		ball->speed.y=-ball->speed.y;}
@@ -126,9 +128,11 @@ delta=ball->pos.x-striker->pos.x-r;
 		ball->speed.y=-ball->speed.y;
 		}
 	 else if(delta<r*2*5/5){
-		ball->speed.y=-ball->speed.y;
+		ball->speed.y=ball->speed.y;
 		}
-
+v=cos(ball->speed.y/ball->speed.x);
+gotoxy(5,5);
+printf("%d",v);
 
 	
 
@@ -161,15 +165,19 @@ rotate(&hej,200);
 
 void ballupdate(struct Ball * ball,int * drawx, int * drawy){
 if(ball->pos.x<0&&ball->speed.x<0 || ball->pos.x>8192&&ball->speed.x>0){
+				ball->angle=256-ball->angle;
 				ball->speed.x=-ball->speed.x;
 			}
 			if(ball->pos.y<0&&ball->speed.y<0 || ball->pos.y>8192&&ball->speed.y>0){
+			ball->angle=256-ball->angle;
 				ball->speed.y=-ball->speed.y;
 			}	
 		
 
-			ball->pos.x+=ball->speed.x;
-			ball->pos.y+=ball->speed.y;
+		//	ball->pos.x+=ball->speed.x;
+		//	ball->pos.y+=ball->speed.y;
+			ball->pos.x+= FIX14_MULT(500, cos(ball->angle))>>14;
+			ball->pos.y+= FIX14_MULT(500, sin(ball->angle))>>14;
 			*drawx=2+(ball->pos.x>>6);
 			*drawy=2+(ball->pos.y>>7);
 

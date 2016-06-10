@@ -10,6 +10,7 @@ int size;
 struct Ball{
 struct Pos pos;
 struct Pos speed;
+long angle;
 };
 struct Klods{
 struct Pos pos;
