@@ -1,50 +1,41 @@
 #include "ansi.h"
-#include "draw.h"
+#include "spil.h"
+//#include "draw.h"
 #include <stdio.h>
-
-void drawKlods(struct Klods klods);
-void drawBall(struct Ball ball);
-void drawStriker(struct Striker striker);
-void drawLife(int i);
-void drawWindow();
-//Lort
+//#include <stdlib.h>
 
 
-void main() {
-	struct Klods klods;
-	klods.life = 4;
-	klods.pos.x = 4000;
-	klods.pos.y = 2000;
-	drawKlods(&klods);
-}
 
-void drawKlods(struct Klods *klods){
+
+void drawKlods(struct Klods *klods) {
 	int i;
-	fgcolor = klods.liv;
-	reverse("y");
-	gotoxy(coordx(klods->pos.x)-4,coordy(klods->pos.y)-1);
-	for (i = 0; i < 16; i++){
-		putchar(" ")
-		if (i = 7){gotoxy(coordx(klods->pos.x)-4,coordy(klods->pos.y));}
+	fgcolor (klods->liv);
+	reverse('y');
+	gotoxy(coordx(klods->pos.x) - 4, coordy(klods->pos.y) - 1);
+	for (i = 0; i < 16; i++) {
+		putchar(' ');
+		if (i == 7) {
+			gotoxy(coordx(klods->pos.x) - 4, coordy(klods->pos.y));
+		}
 	}
-	reverse("n");
+	reverse('n');
 }
 
-void drawBall(struct Ball *ball){
-	struct pos old;
+void drawBall(struct Ball *ball) {
+	static struct Pos old;
 
 	gotoxy(old.x, old.y);
 	putchar(' ');
 
 	gotoxy(coordx(ball->pos.x), coordy(ball->pos.y));
-	putchar(219);
+	putchar('*');
 
 	old.x = coordx(ball->pos.x);
 	old.y = coordy(ball->pos.y);
 }
 
 void drawStriker(struct Striker *striker) {
-	static struct pos old;
+	static struct Pos old;
 	char i;
 
 	fgcolor(2);
@@ -54,12 +45,12 @@ void drawStriker(struct Striker *striker) {
 		putchar(' ');
 	}
 
-	reverse('y');
-	gotoxy(coordx(striker->pos.x) - 4, coordy(striker.pos.y));
+	//reverse('y');
+	gotoxy(coordx(striker->pos.x) - 4, coordy(striker->pos.y));
 	for (i = 0; i < 8; i++) {
-		putchar(' ');
+		putchar(220);
 	}
-	reverse('n');
+	//reverse('n');
 
 	old.x = coordx(striker->pos.x);
 	old.y = coordy(striker->pos.y);
@@ -68,7 +59,7 @@ void drawStriker(struct Striker *striker) {
 void drawLife(char i) {
 	int j = i;
 	fgcolor(1);
-	gotoxy(9, 63); //Starten af første hjerte.
+	gotoxy(4, 58); //Starten af første hjerte.
 	for (i; i > 0; i--) {
 		printf("_  _");
 		down(1);
@@ -87,7 +78,7 @@ void drawLife(char i) {
 		right(4); // Går til starten af næste hjerte.
 	}
 
-	gotoxy(9, 63); //Starten af første hjerte.
+	gotoxy(4, 58); //Starten af sidste hjerte.
 	for (j; j < i; j++) {
 		printf("    ");
 		down(1);
@@ -107,8 +98,8 @@ void drawLife(char i) {
 	}
 
 }
-void drawWindow(){
-	int i, j;
+void drawWindow() {
+	int i;
 	gotoxy(0, 0);
 	for (i = 1; i <= 128; i++) {
 		putchar(223);
@@ -133,23 +124,22 @@ void drawWindow(){
 
 
 void drawMenu(char valg) {
-
 	//PLAY GAME
-	gotoxy(60,55);
+	gotoxy(60, 35);
 	printf("______  _                   _____");
-	gotoxy(60, 56);
+	gotoxy(60,36);
 	printf("| ___ \\| |                 |  __ \\");
-	gotoxy(60, 57);
+	gotoxy(60, 37);
 	printf("| |_/ /| |  __ _  _   _    | |  \\/  __ _  _ __ ___    ___");
-	gotoxy(60, 58);
+	gotoxy(60, 38);
 	printf("|  __/ | | / _` || | | |   | | __  / _` || '_ ` _ \\  / _ \\");
-	gotoxy(60, 59);
+	gotoxy(60, 39);
 	printf("| |    | || (_| || |_| |   | |_\\ \\| (_| || | | | | ||  __/");
-	gotoxy(60, 60);
-	printf("\_|    |_| \__,_| \__, |    \____/ \__,_||_| |_| |_| \___|");
-	gotoxy(60, 61);
+	gotoxy(60, 40);
+	printf("\\_|    |_| \\__,_| \\__, |    \\____/ \\__,_||_| |_| |_| \\___|");
+	gotoxy(60, 41);
 	printf("                    _/ |");
-	gotoxy(60, 62);
+	gotoxy(60, 42);
 	printf("                   |___/");
 
 	//2. PLAYER
