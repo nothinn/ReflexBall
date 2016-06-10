@@ -6,13 +6,14 @@
 #include "LED.h"
 #include "spil.h"
 #include "hardware.h"
+#include "main.h"
 
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
 #define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
 
 
-void timer0int();
+/*void timer0int();
 void led(char a);
 
 void printFix(long i);
@@ -37,23 +38,20 @@ struct Time{
 int hour,min,sec,ms;
 };
 struct Time tid;
-struct Ball{
-struct Pos pos;
-struct Pos speed;
-};
-<<<<<<< HEAD
-struct Striker{
-struct Pos pos;
-char size;
-};
-=======
 
->>>>>>> refs/remotes/origin/master
+
 struct Klods{
 struct Pos pos;
 char liv;
 char farve;
 };
+
+
+
+
+*/
+char TILSTAND;
+
 
 
 
@@ -67,10 +65,8 @@ void main(){
 	EI();
 		
 	color(2,0);
-	printf("%c[?25l",0x1B);
 	clrscr();
 	window(5,5,60,18,"Stop",1);
-
 	window(7,7,58,16,"Watch",0);
 	window(10,10,90,50,"hejsa",1);
 	LEDinit();
@@ -98,21 +94,6 @@ void main(){
 
 }
 void menu(){
-<<<<<<< HEAD
-}
-void spil(){
-char frame;
-
-struct Ball ball;
-int oldx;
-int oldy;
-clrscr();
-	window(1,1,102,52,"Reflexball",1);
-ball.pos.x=5000;
-ball.pos.y=5000;
-ball.speed.x=200;
-ball.speed.y=300;
-=======
 	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
 	SET_VECTOR(TIMER0, timer0int);
 	timer();
@@ -141,43 +122,12 @@ window(10,10,90,50,"hejsa",1);
 
 	}
 	
->>>>>>> refs/remotes/origin/master
 
-	while(1!=2){
-		if(tid.ms%50==0 && frame==0){
-		oldx=ball.pos.x;
-		oldy=ball.pos.y;
-			ball.pos.x+=ball.speed.x;
-			ball.pos.y+=ball.speed.y;
-			if(ball.pos.x<0&&ball.speed.x<0 || ball.pos.x>10000&&ball.speed.x>0){
-				ball.speed.x=-ball.speed.x;
-			}
-			if(ball.pos.y<0&&ball.speed.y<0 || ball.pos.y>10000&&ball.speed.y>0){
-				ball.speed.y=-ball.speed.y;
-			}
-		
-	if(oldy!=ball.pos.y && oldx!=ball.pos.x){
-		gotoxy(oldx/100,oldy/200);
-				printf(" ");	
-				}
-	gotoxy(ball.pos.x/100,ball.pos.y/200);
-			printf("%c",219);
-			
-			frame=1;
-		}
-		else{
-			frame=0;
-		}
-		
-		
-	}
 
 
 	}
 }
 
-<<<<<<< HEAD
-=======
 
 				
 	
@@ -193,7 +143,6 @@ window(10,10,90,50,"hejsa",1);
 
 	
 
->>>>>>> refs/remotes/origin/master
 void pause(){
 }
 
@@ -273,4 +222,3 @@ long expand(long i){
 
 return i << 2;
 }
-

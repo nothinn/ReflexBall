@@ -6,6 +6,7 @@
 #include "LED.h"
 #include "spil.h"
 #include "hardware.h"
+#include "main.h"
 //Lort
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
@@ -30,5 +31,4 @@ PFDD=0xC0;
 PFADDR=0;
 return (PDIN&0x08 ? 0x00 :0x04)|(PFIN&0x40 ? 0x00 :0x02)|(PFIN&0x80 ? 0x00 :0x01);
 }
-
 
