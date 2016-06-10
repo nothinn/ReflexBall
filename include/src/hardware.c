@@ -6,6 +6,7 @@
 #include "LED.h"
 #include "spil.h"
 #include "hardware.h"
+#include "main.h"
 //Lort
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
