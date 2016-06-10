@@ -7,7 +7,7 @@
  *
  * 	Change log: none
  *************************************************/
-
+//Lort
 
 /*** Supported ASCII characters ***
 

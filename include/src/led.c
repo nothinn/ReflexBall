@@ -2,6 +2,7 @@
 #include <sio.h>  
 #include <string.h>
 #include "charset.h"
+//Lort
 
 static char buffer[5][6];
 static char string[100];

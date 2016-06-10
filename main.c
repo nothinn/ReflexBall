@@ -4,18 +4,20 @@
 #include "ansi.h"
 #include "sin.h"
 #include "LED.h"
+#include "spil.h"
+#include "hardware.h"
+
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
 #define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
 
-void timer();
+
 void timer0int();
 void led(char a);
-char readkey();
+
 void printFix(long i);
 long expand(long i);
-int sin(int grad);
-int cos(int grad);
+
 //char FLAG;
 void initVector(struct TVector * v,long x, long y);
 void rotate(struct TVector * v,int angle);
@@ -38,22 +40,55 @@ struct Time tid;
 struct Ball{
 struct Pos pos;
 struct Pos speed;
-}
-struct Striker{
-struct Pos pos;
-char size;
-}
+};
+
 struct Klods{
 struct Pos pos;
 char liv;
 char farve;
+};
+
+
+
+
+
+void main(){
+
+	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
+	SET_VECTOR(TIMER0, timer0int);
+	timer();
+	EI();
+		
+	color(2,0);
+	clrscr();
+	window(5,5,60,18,"Stop",1);
+	window(7,7,58,16,"Watch",0);
+	window(10,10,90,50,"hejsa",1);
+	LEDinit();
+	LEDsetString("Dette ReflexBall spil bliver mega awesome!<<<<");
+	TILSTAND=1;
+	while(1!=2){
+	switch(TILSTAND){
+		case 0 : //menu
+		menu();
+	   break;
+	   case 1:  //spil
+	   spil();
+	   break;
+	   case 2: //pause
+		pause();
+	   break;
+		
+
+	}
+	
+
+
+
+	}
+
 }
-
-
-
-
-
-void main() {
+void menu(){
 	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
 	SET_VECTOR(TIMER0, timer0int);
 	timer();
@@ -86,37 +121,26 @@ window(10,10,90,50,"hejsa",1);
 
 
 	}
-
-}
-void menu(){
-}
-void spil(){
-static Ball ball;
-ball.pos.x=5000;
-ball.pos.y=5000;
-ball.speed.x=100;
-ball.speed.y=200;
-
-while(1!=2){
-
-
 }
 
 
-}
+				
+	
+	
+		
+		
+
+
+
+
+
+
+
+	
+
 void pause(){
 }
 
-void timer(){
-T0CTL=0x19;
-T0H=0x00;
-T0L=0x01;
-T0RH=0x09;
-T0RL=0x00;
-IRQ0ENH =0x20;
-IRQ0ENL =0x20;
-T0CTL=0x99;
-}
 
 
 #pragma interrupt
@@ -142,13 +166,7 @@ printf("%c",(dig&0x02 ? '1' :'0'));
 printf("%c",(dig&0x01 ? '1' :'0'));
 }
 
-char readkey(){
-PDDD=0x08;
-PDADDR=0;
-PFDD=0xC0;
-PFADDR=0;
-return (PDIN&0x08 ? 0x00 :0x04)|(PFIN&0x40 ? 0x00 :0x02)|(PFIN&0x80 ? 0x00 :0x01);
-}
+
 
 void led(char a){
 static char clk;
@@ -185,20 +203,6 @@ v->x = FIX14_MULT(x, cos(angle)) - FIX14_MULT(y, sin(angle));
 v->y = FIX14_MULT(x, sin(angle)) + FIX14_MULT(y, cos(angle));
 
 }
-
-
-
-int sin(int g512){
-int a =g512&0x1ff;
-if(a<0)
-a+=512;
-return SIN[a];
-}
-
-int cos(int g512){
-return sin(g512+128);
-}
-
 
 void printFix(long i){
 //prints 16.16
