@@ -1,8 +1,6 @@
 #include "ansi.h"
 #include "draw.h"
 #include <stdio.h>
-#include <stdlib.h>
-
 
 void drawKlods(struct Klods klods);
 void drawBall(struct Ball ball);
@@ -10,6 +8,11 @@ void drawStriker(struct Striker striker);
 void drawLife(int i);
 void drawWindow();
 
+void drawKlods(struct Klods klods);
+void drawBall(struct Ball ball);
+void drawStriker(struct Striker striker);
+void drawLife(int i);
+void drawWindow();
 
 void drawKlods(struct Klods klods){
 	int i;
@@ -35,10 +38,9 @@ void drawBall(struct Ball ball){
 
 	printf("*");
 
-
 }
 
-void drawStriker(struct Striker striker){
+void drawStriker(struct Striker striker) {
 	struct Striker old;
 	
 }
