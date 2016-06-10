@@ -1,7 +1,7 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-void menu();
+
 void pause();
 void timer();
 void timer0int();
@@ -24,7 +24,6 @@ void initVector(struct TVector * v,long x, long y);
 void rotate(struct TVector * v,int angle);
 
 void printchar(char dig);
-void menu();
 void spil();
 void pause();
 

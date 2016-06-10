@@ -11,7 +11,7 @@
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
 #define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
-void drawMenu(char farve){}
+
 DrawHS(){}
 
 
@@ -20,11 +20,12 @@ void menu(char * TILSTAND){
 	char menuNr = 1;
 	char breakmenu = 0;
 
-	drawMenu(menuNr);
 
 
 
+	clrscr();
 	while(breakmenu != 1){
+	drawMenu(menuNr);
 	push = readkey();
 
 		if(push = 0x01){
@@ -57,7 +58,7 @@ void highScore(){
 	char push;
 	char breakHS = 0;
 	DrawHS();
-
+	clrscr();
 	while(breakHS != 1){
 		push = readkey();
 		if(push = 0x04){
