@@ -79,7 +79,13 @@ projektet: $(OBJS)
 	 $(LINK)  @C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\projektet_Debug.linkcmd
 
 C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\zsldevinit.obj :  \
+<<<<<<< HEAD
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\zsldevinit.asm
+=======
+            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\zsldevinit.asm  \
+            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\ez8dev.inc  \
+            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\gpio.inc
+>>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
 	 $(ASM)  $(AFLAGS) C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\zsldevinit.asm
 
 C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\main.obj :  \

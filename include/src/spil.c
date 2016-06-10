@@ -11,6 +11,11 @@
 #define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
 #define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
 //Lort
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
 
 
 
