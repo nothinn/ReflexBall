@@ -72,7 +72,7 @@ void main(){
 	window(10,10,90,50,"hejsa",1);
 	LEDinit();
 	LEDsetString("Dette ReflexBall spil bliver mega awesome!<<<<");
-	TILSTAND=1;
+	TILSTAND=0;
 	while(1!=2){
 	switch(TILSTAND){
 		case 0 : //menu
