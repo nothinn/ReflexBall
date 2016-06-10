@@ -6,13 +6,14 @@
 #include "LED.h"
 #include "spil.h"
 #include "hardware.h"
+#include "main.h"
 
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
 #define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
 
 
-void timer0int();
+/*void timer0int();
 void led(char a);
 
 void printFix(long i);
@@ -37,16 +38,20 @@ struct Time{
 int hour,min,sec,ms;
 };
 struct Time tid;
-struct Ball{
-struct Pos pos;
-struct Pos speed;
-};
+
 
 struct Klods{
 struct Pos pos;
 char liv;
 char farve;
 };
+
+
+
+
+*/
+char TILSTAND;
+
 
 
 
@@ -217,4 +222,3 @@ long expand(long i){
 
 return i << 2;
 }
-
