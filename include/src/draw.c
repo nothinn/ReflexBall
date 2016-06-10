@@ -4,8 +4,14 @@
 #include <stdlib.h>
 
 
+void drawKlods(struct Klods klods);
+void drawBall(struct Ball ball);
+void drawStriker(struct Striker striker);
+void drawLife(int i);
+void drawWindow();
 
-void drawKlods(struct klods){
+
+void drawKlods(struct Klods klods){
 	int i;
 	fgcolor = klods.liv;
 	reverse("y");
@@ -17,16 +23,28 @@ void drawKlods(struct klods){
 	reverse("n");
 }
 
-void drawBall(){
-	struct Ball
+void drawBall(struct Ball ball){
+	struct Ball old;
+
+	gotoxy(old.pos.x, old.pos.y);
+	printf(" ");
+
+	gotoxy(ball.pos.x, ball.pos.y);
+	old.pos.x = ball.pos.x;
+	old.pos.y = ball.pos.y;
+
+	printf("*");
+
+
 }
 
-void drawStriker(){
-	struct Striker
+void drawStriker(struct Striker striker){
+	struct Striker old;
 	
 }
 
 void drawLife(char i) {
+	int j = i;
 	fgcolor(1);
 	gotoxy(9, 63); //Starten af første hjerte.
 	for (i; i > 0; i--) {
@@ -46,6 +64,26 @@ void drawLife(char i) {
 		up(4);
 		right(4); // Går til starten af næste hjerte.
 	}
+
+	gotoxy(9, 63); //Starten af første hjerte.
+	for (j; j < i; j++) {
+		printf("    ");
+		down(1);
+		left(5);
+		printf("    ");
+		down(1);
+		left(6);
+		printf("      ");
+		down(1);
+		left(5);
+		printf("    ");
+		down(1);
+		left(3);
+		printf("  ");
+		up(4);
+		left(6); // Går til starten af næste hjerte.
+	}
+
 }
 void drawWindow(){
 	
