@@ -1,4 +1,4 @@
-#include "ansi.h"
+/*#include "ansi.h"
 #include "draw.h"
 #include <stdio.h>
 
@@ -115,4 +115,4 @@ void drawWindow(){
 		putchar(220);
 	}
 
-}
+}*/
