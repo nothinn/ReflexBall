@@ -8,11 +8,6 @@ void drawStriker(struct Striker striker);
 void drawLife(int i);
 void drawWindow();
 
-void drawKlods(struct Klods klods);
-void drawBall(struct Ball ball);
-void drawStriker(struct Striker striker);
-void drawLife(int i);
-void drawWindow();
 
 void drawKlods(struct Klods klods){
 	int i;
@@ -20,7 +15,7 @@ void drawKlods(struct Klods klods){
 	reverse("y");
 	gotoxy((klods.pos.x>>6)-4,(klods.pos.y>>7)-1);
 	for (i = 0; i < 16; i++){
-		printf(" ")
+		putchar(" ")
 		if (i = 7){gotoxy((klods.pos.x>>6)-4,klods.pos.y>>7);}
 	}
 	reverse("n");
@@ -42,6 +37,18 @@ void drawBall(struct Ball ball){
 
 void drawStriker(struct Striker striker) {
 	struct Striker old;
+	char i;
+	gotoxy(old.pos.x - 4, old.pos.y)
+	for (i = 0; i < 8; i++) {
+		putchar(' ');
+	}
+
+	reverse('y');
+	gotoxy(striker.pos.x-4,striker.pos.y)
+	for (i = 0; i < 8; i++) {
+		putchar(' ');
+	}
+	reverse('n');
 	
 }
 
