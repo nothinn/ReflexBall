@@ -7,6 +7,7 @@
 #include "spil.h"
 #include "hardware.h"
 #include "main.h"
+#include "menu.h"
 
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
@@ -75,7 +76,7 @@ void main(){
 	while(1!=2){
 	switch(TILSTAND){
 		case 0 : //menu
-		menu();
+		menu(&TILSTAND);
 	   break;
 	   case 1:  //spil
 	   spil();
@@ -106,7 +107,7 @@ void menu(){
 window(10,10,90,50,"hejsa",1);
 	LEDinit();
 	LEDsetString("Dette ReflexBall spil bliver mega awesome!<<<<");
-	TILSTAND=1;
+	TILSTAND=0;
 	while(1!=2){
 	switch(TILSTAND){
 		case 0 : //menu
