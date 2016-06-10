@@ -17,7 +17,7 @@
 
 >>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
 
-
+void kollision(struct Ball * ball, struct Striker * striker);
 
 
 //Test test altså ikke koden!
@@ -27,11 +27,11 @@ void runStriker(struct Striker * striker,char push){
 	push = readkey();
 	fgcolor(2);
 		
-	gotoxy((striker->pos.x-(striker->size/2))/100,striker->pos.y/200);
+	gotoxy(2+((striker->pos.x-(striker->size/2))>>6),2+(striker->pos.y>>7));
 	printf("   %c%c%c%c%c%c%c%c%c%c   ",220,220,220,220,220,220,220,220,220,220);
 		
 	if(push == 0x01){
-		if(striker->pos.x <= 10000){
+		if(striker->pos.x <= 8191){
 			striker->pos.x += 50;
 		}
 	}else if(push == 0x02){
@@ -62,13 +62,13 @@ clrscr();
 window(2,2,130,66,"Reflexball",1);
 ball.pos.x=5000;
 ball.pos.y=5000;
-ball.speed.x=70;
-ball.speed.y=37;
+ball.speed.x=10;
+ball.speed.y=70;
 	
 	
 	striker.pos.x=5000;
-	striker.pos.y=10000;
-	striker.size=10;
+	striker.pos.y=7000;
+	striker.size=1000;
 	push = 0x00;
 
 	
@@ -77,6 +77,7 @@ ball.speed.y=37;
 			
 			ballupdate(&ball,&drawx,&drawy);
 			runStriker(&striker, push);
+			kollision(&ball,&striker);
 			frame=1;
 		}
 		else if(frame==1){ 
@@ -107,13 +108,25 @@ ball.speed.y=37;
 
 }
 
+void kollision(struct Ball * ball, struct Striker * striker){
+	if( ball->pos.y>7000 && ball->speed.y>0 && ball->pos.x>striker->pos.x-striker->size/2 && ball->pos.x<striker->pos.x+striker->size/2){
+				ball->speed.y=-ball->speed.y;
+	}
+
+}
+
+
+
+
 void ballupdate(struct Ball * ball,int * drawx, int * drawy){
 if(ball->pos.x<0&&ball->speed.x<0 || ball->pos.x>8192&&ball->speed.x>0){
 				ball->speed.x=-ball->speed.x;
 			}
 			if(ball->pos.y<0&&ball->speed.y<0 || ball->pos.y>8192&&ball->speed.y>0){
 				ball->speed.y=-ball->speed.y;
-			}
+			}	
+		
+
 			ball->pos.x+=ball->speed.x;
 			ball->pos.y+=ball->speed.y;
 			*drawx=2+(ball->pos.x>>6);
