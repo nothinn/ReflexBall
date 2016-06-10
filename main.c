@@ -25,7 +25,7 @@ void initVector(struct TVector * v,long x, long y);
 void rotate(struct TVector * v,int angle);
 
 void printchar(char dig);
-void menu();
+
 void spil();
 void pause();
 char TILSTAND;
@@ -94,40 +94,7 @@ void main(){
 	}
 
 }
-void menu(){
-	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
-	SET_VECTOR(TIMER0, timer0int);
-	timer();
-	EI();
-		
-	color(2,0);
-	clrscr();
-	window(5,5,60,18,"Stop",1);
-	window(7,7,58,16,"Watch",0);
-window(10,10,90,50,"hejsa",1);
-	LEDinit();
-	LEDsetString("Dette ReflexBall spil bliver mega awesome!<<<<");
-	TILSTAND=0;
-	while(1!=2){
-	switch(TILSTAND){
-		case 0 : //menu
-		menu();
-	   break;
-	   case 1:  //spil
-	   spil();
-	   break;
-	   case 2: //pause
-		pause();
-	   break;
-		
 
-	}
-	
-
-
-
-	}
-}
 
 
 				
