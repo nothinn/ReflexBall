@@ -1,4 +1,4 @@
-/*#include "ansi.h"
+#include "ansi.h"
 #include "draw.h"
 #include <stdio.h>
 
@@ -9,47 +9,60 @@ void drawLife(int i);
 void drawWindow();
 //Lort
 
-void drawKlods(struct Klods klods){
+
+void main() {
+	struct Klods klods;
+	klods.life = 4;
+	klods.pos.x = 4000;
+	klods.pos.y = 2000;
+	drawKlods(&klods);
+}
+
+void drawKlods(struct Klods *klods){
 	int i;
 	fgcolor = klods.liv;
 	reverse("y");
-	gotoxy((klods.pos.x>>6)-4,(klods.pos.y>>7)-1);
+	gotoxy(coordx(klods->pos.x)-4,coordy(klods->pos.y)-1);
 	for (i = 0; i < 16; i++){
 		putchar(" ")
-		if (i = 7){gotoxy((klods.pos.x>>6)-4,klods.pos.y>>7);}
+		if (i = 7){gotoxy(coordx(klods->pos.x)-4,coordy(klods->pos.y));}
 	}
 	reverse("n");
 }
 
-void drawBall(struct Ball ball){
-	struct Ball old;
+void drawBall(struct Ball *ball){
+	struct pos old;
 
-	gotoxy(old.pos.x, old.pos.y);
-	printf(" ");
+	gotoxy(old.x, old.y);
+	putchar(' ');
 
-	gotoxy(ball.pos.x, ball.pos.y);
-	old.pos.x = ball.pos.x;
-	old.pos.y = ball.pos.y;
+	gotoxy(coordx(ball->pos.x), coordy(ball->pos.y));
+	putchar(219);
 
-	printf("*");
-
+	old.x = coordx(ball->pos.x);
+	old.y = coordy(ball->pos.y);
 }
 
-void drawStriker(struct Striker striker) {
-	struct Striker old;
+void drawStriker(struct Striker *striker) {
+	static struct pos old;
 	char i;
-	gotoxy(old.pos.x - 4, old.pos.y)
+
+	fgcolor(2);
+
+	gotoxy(old.x - 4, old.y);
 	for (i = 0; i < 8; i++) {
 		putchar(' ');
 	}
 
 	reverse('y');
-	gotoxy(striker.pos.x-4,striker.pos.y)
+	gotoxy(coordx(striker->pos.x) - 4, coordy(striker.pos.y));
 	for (i = 0; i < 8; i++) {
 		putchar(' ');
 	}
 	reverse('n');
-	
+
+	old.x = coordx(striker->pos.x);
+	old.y = coordy(striker->pos.y);
 }
 
 void drawLife(char i) {
@@ -115,4 +128,44 @@ void drawWindow(){
 		putchar(220);
 	}
 
-}*/
+}
+
+
+
+void drawMenu(char valg) {
+
+	//PLAY GAME
+	gotoxy(60,55);
+	printf("______  _                   _____");
+	gotoxy(60, 56);
+	printf("| ___ \\| |                 |  __ \\");
+	gotoxy(60, 57);
+	printf("| |_/ /| |  __ _  _   _    | |  \\/  __ _  _ __ ___    ___");
+	gotoxy(60, 58);
+	printf("|  __/ | | / _` || | | |   | | __  / _` || '_ ` _ \\  / _ \\");
+	gotoxy(60, 59);
+	printf("| |    | || (_| || |_| |   | |_\\ \\| (_| || | | | | ||  __/");
+	gotoxy(60, 60);
+	printf("\_|    |_| \__,_| \__, |    \____/ \__,_||_| |_| |_| \___|");
+	gotoxy(60, 61);
+	printf("                    _/ |");
+	gotoxy(60, 62);
+	printf("                   |___/");
+
+	//2. PLAYER
+
+
+}
+
+
+
+
+
+
+int coordx(int bigx) {
+	return bigx >> 6;
+}
+
+int coordy(int bigy) {
+	return bigy >> 7;
+}
