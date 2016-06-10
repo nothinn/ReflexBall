@@ -1,6 +1,7 @@
 #include "ansi.h"
 #include "draw.h"
 #include <stdio.h>
+#include "spil.h"
 
 void drawKlods(struct Klods klods);
 void drawBall(struct Ball ball);
@@ -12,7 +13,7 @@ void drawWindow();
 
 void main() {
 	struct Klods klods;
-	klods.life = 4;
+	klods.liv = 4;
 	klods.pos.x = 4000;
 	klods.pos.y = 2000;
 	drawKlods(&klods);
