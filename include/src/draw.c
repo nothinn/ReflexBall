@@ -1,4 +1,4 @@
-#include "ansi.h"
+/*#include "ansi.h"
 #include "draw.h"
 #include <stdio.h>
 
@@ -95,5 +95,24 @@ void drawLife(char i) {
 
 }
 void drawWindow(){
-	
-}
+	int i, j;
+	gotoxy(0, 0);
+	for (i = 1; i <= 128; i++) {
+		putchar(223);
+	}
+	for (i = 0; i < 64; i++) {
+		down(1);
+		left(1);
+		putchar(219);
+	}
+	gotoxy(0, 0);
+	for (i = 0; i < 64; i++) {
+		down(1);
+		left(1);
+		putchar(219);
+	}
+	for (i = 1; i <= 128; i++) {
+		putchar(220);
+	}
+
+}*/
