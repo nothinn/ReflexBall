@@ -20,10 +20,9 @@ void kollision(struct Ball * ball, struct Striker * striker);
 void runStriker(struct Striker * striker,char push){
 	char i;
 	push = readkey();
-	fgcolor(2);
+
 		
-	gotoxy(2+((striker->pos.x-(striker->size/2))>>6),2+(striker->pos.y>>7));
-	printf("   %c%c%c%c%c%c%c%c%c%c   ",220,220,220,220,220,220,220,220,220,220);
+
 		
 	if(push == 0x01){
 		if(striker->pos.x <= 8191){
@@ -45,7 +44,7 @@ void runStriker(struct Striker * striker,char push){
 
 void spil(){
 	char push, i;
-	static struct Striker striker;
+ struct Striker striker;
 	char frame;
 
 struct Ball ball;
@@ -79,7 +78,7 @@ ball.speed.y=70;
 			if(tid.ms%20==0){ //tegning
 			
 					if(oldx!=drawx || oldy!=drawy){ //drawBall();
-											
+						fgcolor(4);						
 					gotoxy(oldx,oldy);
 					
 					printf("  ");
@@ -87,7 +86,11 @@ ball.speed.y=70;
 					printf("%c%c",219,219);
 					oldx=drawx;
 					oldy=drawy;	
-					
+			fgcolor(2);			
+	gotoxy(2+((striker.pos.x-(striker.size/2))>>6),2+(striker.pos.y>>7));
+	printf("   %c%c%c%c%c%c%c%c%c%c   ",220,220,220,220,220,220,220,220,220,220);
+
+
 				}	
 		 	    frame=2;
 			}
@@ -104,8 +107,51 @@ ball.speed.y=70;
 }
 
 void kollision(struct Ball * ball, struct Striker * striker){
-	if( ball->pos.y>7000 && ball->speed.y>0 && ball->pos.x>striker->pos.x-striker->size/2 && ball->pos.x<striker->pos.x+striker->size/2){
-				ball->speed.y=-ball->speed.y;
+char delta;	
+int r =striker->size/2;
+int v;
+struct TVector  hej;
+if( ball->pos.y>7000 && ball->speed.y>0 && ball->pos.x>striker->pos.x-r && ball->pos.x < striker->pos.x+r){
+
+delta=ball->pos.x-striker->pos.x-r;
+	if(delta >0 && delta<r*2*1/5){
+		ball->speed.y=-ball->speed.y;
+		}
+		else if( delta<r*2*2/5){
+		ball->speed.y=-ball->speed.y;}
+	else if(delta<r*2*3/5){
+		ball->speed.y=-ball->speed.y;
+		}
+		else if( delta<r*2*4/5){
+		ball->speed.y=-ball->speed.y;
+		}
+	 else if(delta<r*2*5/5){
+		ball->speed.y=-ball->speed.y;
+		}
+
+
+	
+
+/*
+	if(delta<r/5 && delta>-r/5){
+	ball->speed.y=-ball->speed.y;
+	}
+	else{
+
+initVector(&hej,ball->speed.x, ball->speed.y);
+rotate(&hej,200);
+	
+	ball->speed.y=(hej.y>>12);
+	ball->speed.x=hej.x>>12;
+
+
+
+
+	}
+
+*/
+	
+	
 	}
 
 }
