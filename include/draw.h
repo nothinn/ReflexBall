@@ -1,5 +1,5 @@
-#ifndef _HARDWARE_H_
-#define _HARDWARE_H_
+#ifndef _DRAW_H_
+#define _DRAW_H_
 
 
 void drawKlods(struct Klods *klods);

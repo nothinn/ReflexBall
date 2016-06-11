@@ -24,11 +24,13 @@ void drawKlods(struct Klods *klods) {
 void drawBall(struct Ball *ball) {
 	static struct Pos old;
 
+	fgcolor(1);
+
 	gotoxy(old.x, old.y);
 	putchar(' ');
 
 	gotoxy(coordx(ball->pos.x), coordy(ball->pos.y));
-	putchar('*');
+	putchar(219);
 
 	old.x = coordx(ball->pos.x);
 	old.y = coordy(ball->pos.y);
@@ -59,6 +61,27 @@ void drawStriker(struct Striker *striker) {
 void drawLife(char i) {
 	int j = i;
 	fgcolor(1);
+
+
+	gotoxy(4, 58);//Sletter tidligere hjerter.
+	for (j = 0; j < 5; j++) {
+		printf("    ");
+		down(1);
+		left(5);
+		printf("      ");
+		down(1);
+		left(6);
+		printf("      ");
+		down(1);
+		left(5);
+		printf("    ");
+		down(1);
+		left(3);
+		printf("  ");
+		up(4);
+		right(4); // Går til starten af næste hjerte.
+	}
+
 	gotoxy(4, 58); //Starten af første hjerte.
 	for (i; i > 0; i--) {
 		printf("_  _");
@@ -78,24 +101,6 @@ void drawLife(char i) {
 		right(4); // Går til starten af næste hjerte.
 	}
 
-	gotoxy(4, 58); //Starten af sidste hjerte.
-	for (j; j < i; j++) {
-		printf("    ");
-		down(1);
-		left(5);
-		printf("    ");
-		down(1);
-		left(6);
-		printf("      ");
-		down(1);
-		left(5);
-		printf("    ");
-		down(1);
-		left(3);
-		printf("  ");
-		up(4);
-		left(6); // Går til starten af næste hjerte.
-	}
 
 }
 void drawWindow() {
@@ -124,31 +129,77 @@ void drawWindow() {
 
 
 void drawMenu(char valg) {
+	//Drawing font: DOOM, http://patorjk.com/software/taag
+	char x = 30;
+	char y = 5;
+
+	gotoxy(x, 28);
+	fgcolor(1);
+	if (valg == 0) { fgcolor(4); }
 	//PLAY GAME
-	gotoxy(60, 35);
+	gotoxy(x, y++);
 	printf("______  _                   _____");
-	gotoxy(60,36);
+	gotoxy(x,y++);
 	printf("| ___ \\| |                 |  __ \\");
-	gotoxy(60, 37);
+	gotoxy(x, y++);
 	printf("| |_/ /| |  __ _  _   _    | |  \\/  __ _  _ __ ___    ___");
-	gotoxy(60, 38);
+	gotoxy(x, y++);
 	printf("|  __/ | | / _` || | | |   | | __  / _` || '_ ` _ \\  / _ \\");
-	gotoxy(60, 39);
+	gotoxy(x, y++);
 	printf("| |    | || (_| || |_| |   | |_\\ \\| (_| || | | | | ||  __/");
-	gotoxy(60, 40);
+	gotoxy(x, y++);
 	printf("\\_|    |_| \\__,_| \\__, |    \\____/ \\__,_||_| |_| |_| \\___|");
-	gotoxy(60, 41);
+	gotoxy(x, y++);
 	printf("                    _/ |");
-	gotoxy(60, 42);
+	gotoxy(x, y++);
 	printf("                   |___/");
 
-	//2. PLAYER
+	y += 5;
 
+	fgcolor(1);
+	if (valg == 2) { fgcolor(4) ; }
+	//2. PLAYER
+	gotoxy(x, y++);
+	printf(" _____     _____     ______  _");
+	gotoxy(x, y++);
+	printf("/ __  \\   |  _  |    | ___ \\| |");
+	gotoxy(x, y++);
+	printf("`' / /'   | |/' |    | |_/ /| |  __ _  _   _   ___  _ __");
+	gotoxy(x, y++);
+	printf("  / /     |  /| |    |  __/ | | / _` || | | | / _ \\| '__|");
+	gotoxy(x, y++);
+	printf("./ /___ _ \\ |_/ /    | |    | || (_| || |_| ||  __/| |");
+	gotoxy(x, y++);
+	printf("\\_____/(_) \\___/     \\_|    |_| \\__,_| \\__, | \\___||_|");
+	gotoxy(x, y++);
+	printf("                                        __/ |");
+	gotoxy(x, y++);
+	printf("                                       |___/");
+
+
+	y += 5;
+
+	fgcolor(1);
+	if (valg == 3) { fgcolor(4); }
+	//HighScore
+	gotoxy(x, y++);
+	printf(" _   _  _         _        _____");
+	gotoxy(x, y++);
+	printf("| | | |(_)       | |      /  ___|");
+	gotoxy(x, y++);
+	printf("| |_| | _   __ _ | |__    \\ `--.   ___   ___   _ __   ___");
+	gotoxy(x, y++);
+	printf("|  _  || | / _` || '_ \\    `--. \\ / __| / _ \\ | '__| / _ \\");
+	gotoxy(x, y++);
+	printf("| | | || || (_| || | | |  /\\__/ /| (__ | (_) || |   |  __/");
+	gotoxy(x, y++);
+	printf("\\_| |_/|_| \\__, ||_| |_|  \\____/  \\___| \\___/ |_|    \\___|");
+	gotoxy(x, y++);
+	printf("            __/ |");
+	gotoxy(x, y++);
+	printf("           |___/");
 
 }
-
-
-
 
 
 
