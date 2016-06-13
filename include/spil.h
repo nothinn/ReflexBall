@@ -20,7 +20,8 @@ char liv;
 void runStriker(struct Striker * striker,char push);
 void ballupdate(struct Ball * ball, int * drawx, int * drawy);
 void spil();
-void kollision(struct Ball * ball,struct Striker * striker,struct Klods *klodser);
+
+void kollision(struct Ball * ball, struct Striker * striker,struct Klods * klodser);
 
 #endif /*! _SPIL_H_ */
 //Lort

@@ -9,35 +9,40 @@
 
 void drawKlods(struct Klods *klods) {
 	int i;
-	fgcolor (klods->liv);
+	static char k;
+	fgcolor (klods->liv+k);
 //	reverse('y');
-	gotoxy(coordx(klods->x-256), coordy(klods->y+32));
+if(klods->x%1024==0 &&klods->y%512==0 || klods->x%1024-512==0 &&klods->y%512!=0){k=8;}else{k=0;}
+if(klods->liv==0){
+k=0;}
+	fgcolor (klods->liv+k);
+	gotoxy(coordx(klods->x-256), coordy(klods->y-128));
 	for (i = 0; i < 16; i++) {
-
+		
 
 		if (i == 8) {
-			gotoxy(coordx(klods->x-256), coordy(klods->y+32)-1);
+			gotoxy(coordx(klods->x-256), coordy(klods->y-128)-1);
 		}
-			if(i<8){
-		putchar(219);}else{
-putchar(220);
-		}
+		
+putchar(219);
+		
 	}
 //	reverse('n');
 }
 
 void drawBall(struct Ball *ball) {
 	static struct Pos old;
-
+	reverse('n');
+bgcolor(0);
 	fgcolor(1);
 
 //	if(oldx!=drawx || oldy!=drawy){ //drawBall();
 						fgcolor(4);						
 						gotoxy(old.x, old.y);
 					
-					printf("   ");
+					printf(" ");
 					gotoxy(coordx(ball->x), coordy(ball->y));
-					printf("%c%c%c",219,219,219);
+					printf("%c",220);
 						old.x = coordx(ball->x);
 	old.y = coordy(ball->y);
 
@@ -228,7 +233,7 @@ void drawMenu(char valg) {
 
 
 int coordx(int bigx) {
-	return (bigx >> 6)+4;
+	return (bigx >> 6)+5;
 }
 
 int coordy(int bigy) {

@@ -46,7 +46,7 @@ void runStriker(struct Striker * striker,char push){
 
 
 void spil(){
-	char push, i;
+	char push, i,j;
  struct Striker striker;
 	char frame;
 
@@ -55,13 +55,13 @@ int oldx;
 int oldy;
 int drawx;
 int drawy;
-struct Klods klodser[20];
+struct Klods klodser[5][15];
 clrscr();
 window(3,4,134,69,"Reflexball",1);
 ball.x=5000;
 ball.y=5000;
 ball.speed.x=0;
-ball.speed.y=150;
+ball.speed.y=127;
 ball.angle=74;
 	
 	
@@ -69,14 +69,15 @@ ball.angle=74;
 	striker.pos.y=7000;
 	striker.size=768;
 	push = 0x00;
-
-for(i=0;i<14;i++){
-klodser[i].liv=3;
-klodser[i].y=1024;
-klodser[i].x=512+i*(512+64);
+for(j=0;j<5;j++){
+for(i=0;i<15;i++){
+klodser[j][i].liv=3;
+klodser[j][i].y=1024+j*256;
+klodser[j][i].x=512+i*(512);
 }
-for(i=0;i<14;i++){
-drawKlods(&klodser[i]);
+for(i=0;i<15;i++){
+drawKlods(&klodser[j][i]);
+}
 }
 	
 	while(1!=2){
@@ -85,7 +86,7 @@ drawKlods(&klodser[i]);
 			
 			ballupdate(&ball,&drawx,&drawy);
 			runStriker(&striker, push);
-			kollision(&ball,&striker, &klodser[0]);
+			kollision(&ball,&striker, &klodser[0][0]);
 			frame=1;
 		}
 		else if(frame==1){ 
@@ -120,25 +121,58 @@ drawKlods(&klodser[i]);
 
 }
 
-void kollision(struct Ball * ball, struct Striker * striker,struct Klods *klodser){
+void kollision(struct Ball * ball, struct Striker * striker,struct Klods * klodser){
 int delta;	
-int i;
+char i,j;
 int r =striker->size/2;
 int vinkel;
 //int v;
 long x,y;
 static struct TVector  v;
 
-if(ball->y>1024-96 && ball->y<1024+96){
 
-for(i=0;i<14;i++){
+j=(ball->y-892)/256;
 
-if(ball->x > klodser[i].x-256 && ball->x<klodser[i].x+256 && klodser[i].liv>0){
-klodser[i].liv--;
-drawKlods(&klodser[i]);
-}
-
-}
+	if(j<5 && j>=0){
+		for(i=j*15;i<15+j*15;i++){
+		
+		if(ball->x > klodser[i].x-256 && ball->x<klodser[i].x+256 && klodser[i].liv>0){
+			LEDsetString("Hallo");
+		klodser[i].liv--;
+			if(ball->speed.y <= 0 && ball->speed.x <= 0){
+				if((ball->speed.x*-1 / (klodser[i].x+256 - ball->x)) > (ball->speed.y*-1 / (klodser[i].y+128 - ball->y))){
+							ball->speed.x *= -1;
+				}else{					
+					ball->speed.y *= -1;
+				}
+			}else if(ball->speed.y <= 0 && ball->speed.x >= 0){
+				if((ball->speed.x / (ball->x - klodser[i].x-256)) > (ball->speed.y*-1 / (klodser[i].y+128 - ball->y))){
+					ball->speed.x *= -1;
+				}else{
+					ball->speed.y *= -1;
+				}
+		
+			}else if(ball->speed.y >= 0 && ball->speed.x <= 0){
+				if((ball->speed.x*-1 / (klodser[i].x+256 - ball->x)) > (ball->speed.y / (ball->y - klodser[i].y - 128 ))){
+					ball->speed.x *= -1;
+				}else{
+					ball->speed.y *= -1;
+				}
+		
+			}else if(ball->speed.y >= 0 && ball->speed.x >= 0){
+				if((ball->speed.x / (ball->x - klodser[i].x-256)) > (ball->speed.y / (ball->y - klodser[i].y - 128 ))){
+					ball->speed.x *= -1;
+				}else{
+					ball->speed.y *= -1;
+				}
+			}
+		
+		
+		
+		drawKlods(&klodser[i]);
+		}
+		
+	}
 
 }
 
