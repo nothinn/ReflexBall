@@ -14,8 +14,8 @@
 // === LUT DECLARATIONS ===
 extern const signed short SIN[512];
 
-int sin(int grad);
-int cos(int grad);
+long sin(int grad);
+long cos(int grad);
 
 #endif	// COS_H
 //Lort

@@ -10,8 +10,8 @@
 #include "menu.h"
 
 #define FIX14_SHIFT 14
-#define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
-#define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
+#define FIX14_MULT(a ,b) ((a>>14)*(b))
+#define FIX14_DIV(a,b) ((((a) << FIX14_SHIFT)) / (b))
 
 
 /*void timer0int();
@@ -60,7 +60,7 @@ char TILSTAND;
 
 void main(){
 
-	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
+	init_uart(_UART0,_DEFFREQ,BAUD_115200);
 	SET_VECTOR(TIMER0, timer0int);
 	timer();
 	EI();
@@ -73,6 +73,7 @@ void main(){
 	LEDinit();
 	LEDsetString("Dette ReflexBall spil bliver mega awesome!<<<<");
 	TILSTAND=0;
+
 	while(1!=2){
 	switch(TILSTAND){
 		case 0 : //menu
@@ -171,10 +172,11 @@ v->y=y<<FIX14_SHIFT;
 void rotate(struct TVector * v,int angle){
 long x=v->x;
 long y=v->y;
-
 v->x = FIX14_MULT(x, cos(angle)) - FIX14_MULT(y, sin(angle));
+//printf("%ld",(long)((x)*((y) >> 14)));
 v->y = FIX14_MULT(x, sin(angle)) + FIX14_MULT(y, cos(angle));
-
+//v->x=x;
+//v->y=y;
 }
 
 void printFix(long i){

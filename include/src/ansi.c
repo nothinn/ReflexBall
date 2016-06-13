@@ -3,8 +3,11 @@
 #include <string.h>
 
 #define ESC 0x1B
+
+
 //Lort
 void fgcolor(int foreground) {
+
 /*  Value      foreground     Value     foreground
     ------------------------------------------------
       0        Black            8       Dark Gray
@@ -22,6 +25,8 @@ void fgcolor(int foreground) {
 		foreground -= 8;
 	}
   printf("%c[%d;%dm", ESC, type, foreground+30);
+  	printf("%c[?25l",ESC);// sat ind her de den køres;
+
 }
 
 void bgcolor(int background) {

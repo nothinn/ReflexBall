@@ -7,6 +7,7 @@
 #include "spil.h"
 #include "main.h"
 #include "menu.h"
+#include "draw.h"
 #include "hardware.h"
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
@@ -14,7 +15,7 @@
 
 
 
-void kollision(struct Ball * ball, struct Striker * striker);
+//void kollision(struct Ball * ball, struct Striker * striker);
 
 
 //Test test altså ikke koden!
@@ -27,12 +28,12 @@ void runStriker(struct Striker * striker,char push){
 
 		
 	if(push == 0x01){
-		if(striker->pos.x <= 8191){
-			striker->pos.x += 50;
+		if(striker->pos.x+striker->size/2 < 8129){
+			striker->pos.x += 128;
 		}
 	}else if(push == 0x02){
-		if(striker->pos.x >= 1){	
-			striker->pos.x -= 50;
+		if(striker->pos.x-striker->size/2 > 64){	
+			striker->pos.x -= 128;
 		}
 	}
 				
@@ -54,53 +55,63 @@ int oldx;
 int oldy;
 int drawx;
 int drawy;
+struct Klods klodser[20];
 clrscr();
-window(2,2,130,66,"Reflexball",1);
-ball.pos.x=5000;
-ball.pos.y=5000;
-ball.speed.x=10;
-ball.speed.y=70;
+window(3,4,134,69,"Reflexball",1);
+ball.x=5000;
+ball.y=5000;
+ball.speed.x=0;
+ball.speed.y=150;
 ball.angle=74;
 	
 	
 	striker.pos.x=5000;
 	striker.pos.y=7000;
-	striker.size=1000;
+	striker.size=768;
 	push = 0x00;
 
+for(i=0;i<14;i++){
+klodser[i].liv=3;
+klodser[i].y=1024;
+klodser[i].x=512+i*(512+64);
+}
+for(i=0;i<14;i++){
+drawKlods(&klodser[i]);
+}
 	
-	while(1!=2){			
+	while(1!=2){
+	//clrscr();		
 		if(frame==0){ //beregning
 			
 			ballupdate(&ball,&drawx,&drawy);
 			runStriker(&striker, push);
-			kollision(&ball,&striker);
+			kollision(&ball,&striker, &klodser[0]);
 			frame=1;
 		}
 		else if(frame==1){ 
-			if(tid.ms%20==0){ //tegning
-			
-					if(oldx!=drawx || oldy!=drawy){ //drawBall();
-						fgcolor(4);						
+			if(tid.ms%40==0){ //tegning
+			//clrscr();	
+					if(oldx!=drawx || oldy!=drawy){ drawBall(&ball);
+				/*		fgcolor(4);						
 					gotoxy(oldx,oldy);
 					
-					printf("  ");
+					printf("   ");
 					gotoxy(drawx,drawy);
-					printf("%c%c",219,219);
+					printf("%c%c%c",219,219,219);
 					oldx=drawx;
 					oldy=drawy;	
-			fgcolor(2);			
-	gotoxy(2+((striker.pos.x-(striker.size/2))>>6),2+(striker.pos.y>>7));
-	printf("   %c%c%c%c%c%c%c%c%c%c   ",220,220,220,220,220,220,220,220,220,220);
-
-
+			drawBall(&ball);
+*/
+		//	fgcolor(2);			
+ drawStriker(&striker);
+ 
 				}	
 		 	    frame=2;
 			}
 		
 		
 		}else{
-			if(tid.ms%20!=0){ //start ny beregning
+			if(tid.ms%40!=0){ //start ny beregning
 			frame=0;
 			}
 		}
@@ -109,32 +120,75 @@ ball.angle=74;
 
 }
 
-void kollision(struct Ball * ball, struct Striker * striker){
-char delta;	
+void kollision(struct Ball * ball, struct Striker * striker,struct Klods *klodser){
+int delta;	
+int i;
 int r =striker->size/2;
-int v;
-struct TVector  hej;
-if( ball->pos.y>7000 && ball->speed.y>0 && ball->pos.x>striker->pos.x-r && ball->pos.x < striker->pos.x+r){
+int vinkel;
+//int v;
+long x,y;
+static struct TVector  v;
 
-delta=ball->pos.x-striker->pos.x-r;
-	if(delta >0 && delta<r*2*1/5){
-		ball->speed.y=-ball->speed.y;
-			ball->speed.x;
+if(ball->y>1024-96 && ball->y<1024+96){
+
+for(i=0;i<14;i++){
+
+if(ball->x > klodser[i].x-256 && ball->x<klodser[i].x+256 && klodser[i].liv>0){
+klodser[i].liv--;
+drawKlods(&klodser[i]);
+}
+
+}
+
+}
+
+
+
+if( ball->y>=7000 && ball->y<7000+ball->speed.y && ball->speed.y>0 && ball->x>striker->pos.x-r-64 && ball->x < striker->pos.x+r+64){
+
+delta=ball->x-striker->pos.x;
+
+/*	if(delta >0 && delta<r*2*1/5){
+		
+	
+	//ball->speed.y=-ball->speed.y;
+		//	ball->speed.x;
+
+
+
+//v.x=30<<14;
+//v.y=10<<14;
+vinkel=-32;
+//x=v.x>>14;
+//y=v.y>>14;
+//gotoxy(5,5);
+//printf("%ld:%ld",x,y);	
+	
+//		ball->speed.y=(hej.x>>14);
+
 		}
 		else if( delta<r*2*2/5){
-		ball->speed.y=-ball->speed.y;}
+	vinkel=-16;}
 	else if(delta<r*2*3/5){
-		ball->speed.y=-ball->speed.y;
+	vinkel=0;
 		}
 		else if( delta<r*2*4/5){
-		ball->speed.y=-ball->speed.y;
+	vinkel=16;
 		}
 	 else if(delta<r*2*5/5){
-		ball->speed.y=ball->speed.y;
-		}
-v=cos(ball->speed.y/ball->speed.x);
-gotoxy(5,5);
-printf("%d",v);
+	vinkel=32;
+		}*/
+		ball->speed.y=-ball->speed.y;
+	
+		initVector(&v,ball->speed.x, ball->speed.y);
+			rotate(&v,delta*32/r);
+		ball->speed.y=(v.y>>14);
+	ball->speed.x=(v.x>>14);
+//	gotoxy(10,10);
+//	printf(" %d ",delta*32/r);
+//v=cos(ball->speed.y/ball->speed.x);
+//gotoxy(5,5);
+//printf("%d",v);
 
 	
 
@@ -166,21 +220,21 @@ rotate(&hej,200);
 
 
 void ballupdate(struct Ball * ball,int * drawx, int * drawy){
-if(ball->pos.x<0&&ball->speed.x<0 || ball->pos.x>8192&&ball->speed.x>0){
-				ball->angle=256-ball->angle;
+if(ball->x<64&&ball->speed.x<0 || ball->x>8128&&ball->speed.x>0){
+				//ball->angle=256-ball->angle;
 				ball->speed.x=-ball->speed.x;
 			}
-			if(ball->pos.y<0&&ball->speed.y<0 || ball->pos.y>8192&&ball->speed.y>0){
-			ball->angle=256-ball->angle;
+			if(ball->y<0&&ball->speed.y<0 || ball->y>8192&&ball->speed.y>0){
+			//ball->angle=256-ball->angle;
 				ball->speed.y=-ball->speed.y;
 			}	
 		
 
-		//	ball->pos.x+=ball->speed.x;
-		//	ball->pos.y+=ball->speed.y;
-			ball->pos.x+= FIX14_MULT(500, cos(ball->angle))>>14;
-			ball->pos.y+= FIX14_MULT(500, sin(ball->angle))>>14;
-			*drawx=2+(ball->pos.x>>6);
-			*drawy=2+(ball->pos.y>>7);
+			ball->x+=ball->speed.x;
+			ball->y+=ball->speed.y;
+		//	ball->pos.x+= FIX14_MULT(500, cos(ball->angle))>>14;
+		//	ball->pos.y+= FIX14_MULT(500, sin(ball->angle))>>14;
+			*drawx=4+(ball->x>>6);
+			*drawy=5+(ball->y>>7);
 
 }

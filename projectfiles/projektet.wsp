@@ -387,21 +387,20 @@ DockingStyle=61440
 ExStyle=908
 MDIChild=False
 MRUDockBottomPos=28
-MRUDockID=59419
+MRUDockID=0
 MRUDockLeftPos=-1
 MRUDockRightPos=1535
 MRUDockTopPos=-1
 MRUDockingState=0
-MRUFloatCX=443
-MRUFloatCY=29
+MRUFloatCX=0
+MRUFloatCY=0
 MRUFloatStyle=8196
 MRUFloatXPos=-2147483648
 MRUFloatYPos=5052912
 MRUHorzDockCX=1536
 MRUHorzDockCY=29
-MRUVertDockCX=80
-MRUVertDockCY=556
-MRUWidth=443
+MRUVertDockCX=0
+MRUVertDockCY=0
 PctWidth=1000000
 PrevFloating=False
 ResourceID=0
@@ -497,145 +496,101 @@ ptn_Child4=Document-3
 ptn_Child5=Document-4
 ptn_Child6=Document-5
 ptn_Child7=Document-6
-<<<<<<< HEAD
 ptn_Child8=Document-7
 ptn_Child9=Document-8
-=======
->>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
 
 [WorkState_v1_1.Frames.ChildFrames.Document-0]
 ptn_Child1=ViewFrame-0
 
 [WorkState_v1_1.Frames.ChildFrames.Document-0.ViewFrame-0]
-<<<<<<< HEAD
-DocPathName=..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\spil.c
-=======
 DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\spil.c
->>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
 DocTemplateIndex=0
 DocumentString=IDE Document
-IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPKAAAAAAAJBAAAAAAGJEAAAAALIBAAAAA
+IsActiveChildFrame=True
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPIKAAAAAAMFAAAAAAEDFAAAAAOMBAAAAA
 
 [WorkState_v1_1.Frames.ChildFrames.Document-1]
 ptn_Child1=ViewFrame-0
 
 [WorkState_v1_1.Frames.ChildFrames.Document-1.ViewFrame-0]
-<<<<<<< HEAD
-DocPathName=..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\main.c
+DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\main.c
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
 WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPKBAAAAAAKBAAAAAAGKEAAAAAMIBAAAAA
-=======
-DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\main.c
-DocTemplateIndex=0
-DocumentString=IDE Document
-IsActiveChildFrame=True
-WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPKBAAAAAAKBAAAAAAGKEAAAAAMIBAAAAA
->>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
 
 [WorkState_v1_1.Frames.ChildFrames.Document-2]
 ptn_Child1=ViewFrame-0
 
 [WorkState_v1_1.Frames.ChildFrames.Document-2.ViewFrame-0]
-<<<<<<< HEAD
-DocPathName=..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\draw.c
-DocTemplateIndex=0
-DocumentString=IDE Document
-IsActiveChildFrame=True
-WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPEDAAAAAAEDAAAAAAEMEAAAAAKKBAAAAA
-=======
-DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\draw.c
-DocTemplateIndex=0
-DocumentString=IDE Document
-IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPEDAAAAAAEDAAAAAAEMEAAAAAKKBAAAAA
->>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
-
-[WorkState_v1_1.Frames.ChildFrames.Document-3]
-ptn_Child1=ViewFrame-0
-
-[WorkState_v1_1.Frames.ChildFrames.Document-3.ViewFrame-0]
-<<<<<<< HEAD
-DocPathName=..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\ansi.c
-=======
 DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\ansi.c
->>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
 WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPOEAAAAAAOEAAAAAAONEAAAAAEMBAAAAA
 
-[WorkState_v1_1.Frames.ChildFrames.Document-4]
+[WorkState_v1_1.Frames.ChildFrames.Document-3]
 ptn_Child1=ViewFrame-0
 
-[WorkState_v1_1.Frames.ChildFrames.Document-4.ViewFrame-0]
-<<<<<<< HEAD
-DocPathName=..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\hardware.c
-=======
+[WorkState_v1_1.Frames.ChildFrames.Document-3.ViewFrame-0]
 DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\hardware.c
->>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
 WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPIGAAAAAAIGAAAAAAIPEAAAAAONBAAAAA
 
-[WorkState_v1_1.Frames.ChildFrames.Document-5]
+[WorkState_v1_1.Frames.ChildFrames.Document-4]
 ptn_Child1=ViewFrame-0
 
-[WorkState_v1_1.Frames.ChildFrames.Document-5.ViewFrame-0]
-<<<<<<< HEAD
-DocPathName=..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\led.c
-=======
+[WorkState_v1_1.Frames.ChildFrames.Document-4.ViewFrame-0]
 DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\led.c
->>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
 WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPCIAAAAAACIAAAAAACBFAAAAAIPBAAAAA
 
-[WorkState_v1_1.Frames.ChildFrames.Document-6]
+[WorkState_v1_1.Frames.ChildFrames.Document-5]
 ptn_Child1=ViewFrame-0
 
-[WorkState_v1_1.Frames.ChildFrames.Document-6.ViewFrame-0]
-<<<<<<< HEAD
-DocPathName=..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\sin.c
-=======
+[WorkState_v1_1.Frames.ChildFrames.Document-5.ViewFrame-0]
 DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\sin.c
->>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
 WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPMJAAAAAAMJAAAAAAMCFAAAAACBCAAAAA
 
-<<<<<<< HEAD
+[WorkState_v1_1.Frames.ChildFrames.Document-6]
+ptn_Child1=ViewFrame-0
+
+[WorkState_v1_1.Frames.ChildFrames.Document-6.ViewFrame-0]
+DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\menu.c
+DocTemplateIndex=0
+DocumentString=IDE Document
+IsActiveChildFrame=False
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPKBAAAAAAKBAAAAAAGKEAAAAAMIBAAAAA
+
 [WorkState_v1_1.Frames.ChildFrames.Document-7]
 ptn_Child1=ViewFrame-0
 
 [WorkState_v1_1.Frames.ChildFrames.Document-7.ViewFrame-0]
-DocPathName=..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\main.h
+DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\main.h
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPGLAAAAAAGLAAAAAAGEFAAAAAMCCAAAAA
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPKBAAAAAAKBAAAAAAOLDAAAAAIIBAAAAA
 
 [WorkState_v1_1.Frames.ChildFrames.Document-8]
 ptn_Child1=ViewFrame-0
 
 [WorkState_v1_1.Frames.ChildFrames.Document-8.ViewFrame-0]
-DocPathName=..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\spil.h
+DocPathName=..\..\..\..\..\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\sin.h
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPAAAAAAAAAAAAAAAAAJEAAAAAGHBAAAAA
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPKBAAAAAAKBAAAAAAGKEAAAAAMIBAAAAA
 
 [WorkState_v1_1.Frames.MainFrame]
-Title=projektet -- ZDS II - Z8 Encore! Family -- draw - [draw]
-=======
-[WorkState_v1_1.Frames.MainFrame]
-Title=projektet -- ZDS II - Z8 Encore! Family -- main - [main]
->>>>>>> b73b5eae283dbe68e10ee58c0bc35d7a973d72c5
+Title=projektet -- ZDS II - Z8 Encore! Family -- spil*
 WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAAADIPPPPAADIPPPPPPPPPPPPPPPPPPPPAAAAAAAAEAAAAAAAPPFAAAAAKKCAAAAA
 
 [WorkState_v1_1.ToolBarMgr]

@@ -13,17 +13,10 @@ void rotate(struct TVector * v,int angle);
 void printFix(long i);
 
 
-void timer0int();
-void led(char a);
-
-void printFix(long i);
 long expand(long i);
 
 //char FLAG;
-void initVector(struct TVector * v,long x, long y);
-void rotate(struct TVector * v,int angle);
 
-void printchar(char dig);
 void spil();
 void pause();
 

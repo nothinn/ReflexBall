@@ -8,19 +8,19 @@ struct Pos pos;
 int size;
 };
 struct Ball{
-struct Pos pos;
+int x,y;
 struct Pos speed;
 long angle;
 };
 struct Klods{
-struct Pos pos;
+int x,y;
 char liv;
-char farve;
 };
 
 void runStriker(struct Striker * striker,char push);
 void ballupdate(struct Ball * ball, int * drawx, int * drawy);
 void spil();
+void kollision(struct Ball * ball,struct Striker * striker,struct Klods *klodser);
 
 #endif /*! _SPIL_H_ */
 //Lort

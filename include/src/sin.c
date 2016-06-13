@@ -86,14 +86,16 @@ const signed short SIN[512]=
 	0xF9BA,0xFA82,0xFB4B,0xFC13,0xFCDC,0xFDA5,0xFE6E,0xFF37,
 };
 
-int sin(int g512){
+long sin(int g512){
 int a =g512&0x1ff;
-if(a<0)
-a+=512;
-return SIN[a];
+//if(g512>0 && g512<256){
+return SIN[a];//}
+//else{
+//return -SIN[a];
+//}
 }
 
-int cos(int g512){
+long cos(int g512){
 return sin(g512+128);
 }
 
