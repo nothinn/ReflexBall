@@ -46,7 +46,8 @@ bgcolor(0);
 						old.x = coordx(ball->x);
 	old.y = coordy(ball->y);
 
-
+	gotoxy(200,45);
+	printf("%04d : %04d", ball->x, ball->y);
 	//	}
 
 
@@ -61,7 +62,7 @@ bgcolor(0);
 	putchar(219);
 
 	old.x = coordx(ball->pos.x);
-	old.y = coordy(ball->pos.y);*/
+	old.y = coordy(ball->pos.y);*/	
 }
 
 void drawStriker(struct Striker *striker) {
@@ -78,7 +79,7 @@ void drawStriker(struct Striker *striker) {
 
 	//reverse('y');		go
 	gotoxy(coordx(striker->pos.x-(striker->size/2))-3, coordy(striker->pos.y));
-		printf("    %c%c%c%c%c%c%c%c%c%c%c%c    ",220,220,220,220,220,220,220,220,220,220,220,220);
+		printf("  %c%c%c%c%c%c%c%c%c%c%c%c  ",220,220,220,220,220,220,220,220,220,220,220,220);
 //	for (i = 0; i < 12; i++) {
 //		putchar(220);	}
 	//reverse('n');
@@ -92,7 +93,7 @@ void drawLife(char i) {
 	fgcolor(1);
 
 
-	gotoxy(4, 58);//Sletter tidligere hjerter.
+	gotoxy(8, 60);//Sletter tidligere hjerter.
 	for (j = 0; j < 5; j++) {
 		printf("    ");
 		down(1);
@@ -111,7 +112,7 @@ void drawLife(char i) {
 		right(4); // Går til starten af næste hjerte.
 	}
 
-	gotoxy(4, 58); //Starten af første hjerte.
+	gotoxy(8, 60); //Starten af første hjerte.
 	for (i; i > 0; i--) {
 		printf("_  _");
 		down(1);

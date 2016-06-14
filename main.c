@@ -80,10 +80,10 @@ void main(){
 		menu(&TILSTAND);
 	   break;
 	   case 1:  //spil
-	   spil();
+	   spil(&TILSTAND);
 	   break;
 	   case 2: //pause
-		pause();
+		pause(&TILSTAND);
 	   break;
 		
 

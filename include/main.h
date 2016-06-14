@@ -17,8 +17,8 @@ long expand(long i);
 
 //char FLAG;
 
-void spil();
-void pause();
+void spil(char * TILSTAND);
+void pause(char * TILSTAND);
 
 struct TVector{
 long x,y;

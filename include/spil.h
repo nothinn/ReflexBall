@@ -10,18 +10,18 @@ int size;
 struct Ball{
 int x,y;
 struct Pos speed;
-long angle;
+char liv;
 };
 struct Klods{
 int x,y;
 char liv;
 };
 
-void runStriker(struct Striker * striker,char push);
+void runStriker(struct Striker * striker,char push, struct Ball * ball);
 void ballupdate(struct Ball * ball, int * drawx, int * drawy);
-void spil();
+void spil(char * TILSTAND);
 
-void kollision(struct Ball * ball, struct Striker * striker,struct Klods * klodser);
+char kollision(struct Ball * ball, struct Striker * striker,struct Klods * klodser);
 
 #endif /*! _SPIL_H_ */
 //Lort
