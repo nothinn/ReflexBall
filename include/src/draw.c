@@ -1,37 +1,58 @@
 #include "ansi.h"
+#include "spil.h"
 #include "draw.h"
 #include <stdio.h>
-
-void drawKlods(struct Klods klods);
-void drawBall(struct Ball ball);
-void drawStriker(struct Striker striker);
-void drawLife(int i);
-void drawWindow();
-//Lort
+//#include <stdlib.h>
 
 
-void main() {
-	struct Klods klods;
-	klods.life = 4;
-	klods.pos.x = 4000;
-	klods.pos.y = 2000;
-	drawKlods(&klods);
-}
 
-void drawKlods(struct Klods *klods){
+
+void drawKlods(struct Klods *klods) {
 	int i;
-	fgcolor = klods.liv;
-	reverse("y");
-	gotoxy(coordx(klods->pos.x)-4,coordy(klods->pos.y)-1);
-	for (i = 0; i < 16; i++){
-		putchar(" ")
-		if (i = 7){gotoxy(coordx(klods->pos.x)-4,coordy(klods->pos.y));}
+	static char k;
+	fgcolor (klods->liv+k);
+//	reverse('y');
+if(klods->x%1024==0 &&klods->y%512==0 || klods->x%1024-512==0 &&klods->y%512!=0){k=8;}else{k=0;}
+if(klods->liv==0){
+k=0;}
+	fgcolor (klods->liv+k);
+	gotoxy(coordx(klods->x-256), coordy(klods->y-128));
+	for (i = 0; i < 16; i++) {
+		
+
+		if (i == 8) {
+			gotoxy(coordx(klods->x-256), coordy(klods->y-128)-1);
+		}
+		
+putchar(219);
+		
 	}
-	reverse("n");
+//	reverse('n');
 }
 
-void drawBall(struct Ball *ball){
-	struct pos old;
+void drawBall(struct Ball *ball) {
+	static struct Pos old;
+	reverse('n');
+bgcolor(0);
+	fgcolor(1);
+
+//	if(oldx!=drawx || oldy!=drawy){ //drawBall();
+						fgcolor(4);						
+						gotoxy(old.x, old.y);
+					
+					printf(" ");
+					gotoxy(coordx(ball->x), coordy(ball->y));
+					printf("%c",220);
+						old.x = coordx(ball->x);
+	old.y = coordy(ball->y);
+
+
+	//	}
+
+
+
+
+/*
 
 	gotoxy(old.x, old.y);
 	putchar(' ');
@@ -40,35 +61,57 @@ void drawBall(struct Ball *ball){
 	putchar(219);
 
 	old.x = coordx(ball->pos.x);
-	old.y = coordy(ball->pos.y);
+	old.y = coordy(ball->pos.y);*/
 }
 
 void drawStriker(struct Striker *striker) {
-	static struct pos old;
+//	static struct Pos old;
 	char i;
 
 	fgcolor(2);
+//	gotoxy(((striker.pos.x-(striker.size/2))>>6)+1,5+(striker.pos.y>>7));
+//	printf("    %c%c%c%c%c%c%c%c%c%c%c%c    ",220,220,220,220,220,220,220,220,220,220,220,220);
+//	gotoxy(old.x - 4, old.y);
+//	for (i = 0; i < 8; i++) {
+//		putchar(' ');
+//	}
 
-	gotoxy(old.x - 4, old.y);
-	for (i = 0; i < 8; i++) {
-		putchar(' ');
-	}
+	//reverse('y');		go
+	gotoxy(coordx(striker->pos.x-(striker->size/2))-3, coordy(striker->pos.y));
+		printf("    %c%c%c%c%c%c%c%c%c%c%c%c    ",220,220,220,220,220,220,220,220,220,220,220,220);
+//	for (i = 0; i < 12; i++) {
+//		putchar(220);	}
+	//reverse('n');
 
-	reverse('y');
-	gotoxy(coordx(striker->pos.x) - 4, coordy(striker.pos.y));
-	for (i = 0; i < 8; i++) {
-		putchar(' ');
-	}
-	reverse('n');
-
-	old.x = coordx(striker->pos.x);
-	old.y = coordy(striker->pos.y);
+//	old.x = coordx(striker->pos.x);
+//	old.y = coordy(striker->pos.y);
 }
 
 void drawLife(char i) {
 	int j = i;
 	fgcolor(1);
-	gotoxy(9, 63); //Starten af første hjerte.
+
+
+	gotoxy(4, 58);//Sletter tidligere hjerter.
+	for (j = 0; j < 5; j++) {
+		printf("    ");
+		down(1);
+		left(5);
+		printf("      ");
+		down(1);
+		left(6);
+		printf("      ");
+		down(1);
+		left(5);
+		printf("    ");
+		down(1);
+		left(3);
+		printf("  ");
+		up(4);
+		right(4); // Går til starten af næste hjerte.
+	}
+
+	gotoxy(4, 58); //Starten af første hjerte.
 	for (i; i > 0; i--) {
 		printf("_  _");
 		down(1);
@@ -87,28 +130,10 @@ void drawLife(char i) {
 		right(4); // Går til starten af næste hjerte.
 	}
 
-	gotoxy(9, 63); //Starten af første hjerte.
-	for (j; j < i; j++) {
-		printf("    ");
-		down(1);
-		left(5);
-		printf("    ");
-		down(1);
-		left(6);
-		printf("      ");
-		down(1);
-		left(5);
-		printf("    ");
-		down(1);
-		left(3);
-		printf("  ");
-		up(4);
-		left(6); // Går til starten af næste hjerte.
-	}
 
 }
-void drawWindow(){
-	int i, j;
+void drawWindow() {
+	int i;
 	gotoxy(0, 0);
 	for (i = 1; i <= 128; i++) {
 		putchar(223);
@@ -133,39 +158,84 @@ void drawWindow(){
 
 
 void drawMenu(char valg) {
+	//Drawing font: DOOM, http://patorjk.com/software/taag
+	char x = 30;
+	char y = 5;
 
+	gotoxy(x, 28);
+	fgcolor(1);
+	if (valg == 1) { fgcolor(4); }
 	//PLAY GAME
-	gotoxy(60,55);
+	gotoxy(x, y++);
 	printf("______  _                   _____");
-	gotoxy(60, 56);
+	gotoxy(x,y++);
 	printf("| ___ \\| |                 |  __ \\");
-	gotoxy(60, 57);
+	gotoxy(x, y++);
 	printf("| |_/ /| |  __ _  _   _    | |  \\/  __ _  _ __ ___    ___");
-	gotoxy(60, 58);
+	gotoxy(x, y++);
 	printf("|  __/ | | / _` || | | |   | | __  / _` || '_ ` _ \\  / _ \\");
-	gotoxy(60, 59);
+	gotoxy(x, y++);
 	printf("| |    | || (_| || |_| |   | |_\\ \\| (_| || | | | | ||  __/");
-	gotoxy(60, 60);
-	printf("\_|    |_| \__,_| \__, |    \____/ \__,_||_| |_| |_| \___|");
-	gotoxy(60, 61);
+	gotoxy(x, y++);
+	printf("\\_|    |_| \\__,_| \\__, |    \\____/ \\__,_||_| |_| |_| \\___|");
+	gotoxy(x, y++);
 	printf("                    _/ |");
-	gotoxy(60, 62);
+	gotoxy(x, y++);
 	printf("                   |___/");
 
-	//2. PLAYER
+	y += 5;
 
+	fgcolor(1);
+	if (valg == 2) { fgcolor(4) ; }
+	//2. PLAYER
+	gotoxy(x, y++);
+	printf(" _____     _____     ______  _");
+	gotoxy(x, y++);
+	printf("/ __  \\   |  _  |    | ___ \\| |");
+	gotoxy(x, y++);
+	printf("`' / /'   | |/' |    | |_/ /| |  __ _  _   _   ___  _ __");
+	gotoxy(x, y++);
+	printf("  / /     |  /| |    |  __/ | | / _` || | | | / _ \\| '__|");
+	gotoxy(x, y++);
+	printf("./ /___ _ \\ |_/ /    | |    | || (_| || |_| ||  __/| |");
+	gotoxy(x, y++);
+	printf("\\_____/(_) \\___/     \\_|    |_| \\__,_| \\__, | \\___||_|");
+	gotoxy(x, y++);
+	printf("                                        __/ |");
+	gotoxy(x, y++);
+	printf("                                       |___/");
+
+
+	y += 5;
+
+	fgcolor(1);
+	if (valg == 3) { fgcolor(4); }
+	//HighScore
+	gotoxy(x, y++);
+	printf(" _   _  _         _        _____");
+	gotoxy(x, y++);
+	printf("| | | |(_)       | |      /  ___|");
+	gotoxy(x, y++);
+	printf("| |_| | _   __ _ | |__    \\ `--.   ___   ___   _ __   ___");
+	gotoxy(x, y++);
+	printf("|  _  || | / _` || '_ \\    `--. \\ / __| / _ \\ | '__| / _ \\");
+	gotoxy(x, y++);
+	printf("| | | || || (_| || | | |  /\\__/ /| (__ | (_) || |   |  __/");
+	gotoxy(x, y++);
+	printf("\\_| |_/|_| \\__, ||_| |_|  \\____/  \\___| \\___/ |_|    \\___|");
+	gotoxy(x, y++);
+	printf("            __/ |");
+	gotoxy(x, y++);
+	printf("           |___/");
 
 }
-
-
-
 
 
 
 int coordx(int bigx) {
-	return bigx >> 6;
+	return (bigx >> 6)+5;
 }
 
 int coordy(int bigy) {
-	return bigy >> 7;
+	return (bigy >> 7)+5;
 }

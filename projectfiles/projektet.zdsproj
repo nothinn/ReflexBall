@@ -6,11 +6,12 @@
 <file filter-key="">.\zsldevinit.asm</file>
 <file filter-key="">..\main.c</file>
 <file filter-key="">..\include\src\ansi.c</file>
-<file filter-key="">..\include\src\draw.c</file>
 <file filter-key="">..\include\src\hardware.c</file>
 <file filter-key="">..\include\src\led.c</file>
 <file filter-key="">..\include\src\sin.c</file>
 <file filter-key="">..\include\src\spil.c</file>
+<file filter-key="">..\include\src\menu.c</file>
+<file filter-key="">..\include\src\draw.c</file>
 </files>
 
 <!-- configuration information -->

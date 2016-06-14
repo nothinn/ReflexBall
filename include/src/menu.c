@@ -8,6 +8,7 @@
 #include "main.h"
 #include "hardware.h"
 #include "menu.h"
+#include "draw.h"
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
 #define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
@@ -27,33 +28,38 @@ void menu(char * TILSTAND){
 	while(breakmenu != 1){
 	drawMenu(menuNr);
 	push = readkey();
-
-		if(push = 0x01){
-			while(push == 0x01){}
-			if(menuNr <= 2){
+printf("%d,%d",push,menuNr);
+		if(push == 0x01){
+			//while(push == 0x01){}
+			if(menuNr < 3){
 			menuNr++;
 			}
-		}else if(push = 0x02){
-			while(push == 0x02){}
-			if(menuNr <= 2){
+		}else if(push == 0x02){
+		//	while(push == 0x02){}
+			if(menuNr > 1){
 			menuNr--;
 			}
-		}else if(push = 0x04){
-			while(push == 0x04){}
+		}else if(push == 0x04){
+		//	while(push == 0x04){}
 			if(menuNr == 1){
-				* TILSTAND = 1;
-				breakmenu = 1;
+				*TILSTAND = 1;
+			
+				breakmenu=1;
+				printf("fukkkkkkkkkkkkkkkkkk");
 			}else if(menuNr == 2){
 				//tilstand = spil2;
-				breakmenu = 1;
+					breakmenu=1;
+					printf("fukkkkkkkkkkkkkkkkkk");
 			}else if(menuNr == 3){
-				highScore();
+			
+				DrawHS();	
+					printf("fukkkkkkkkkkkkkkkkkk");
 			}
 		}
 	}
 }
 
-
+/*
 void highScore(){
 	char push;
 	char breakHS = 0;
@@ -61,10 +67,10 @@ void highScore(){
 	clrscr();
 	while(breakHS != 1){
 		push = readkey();
-		if(push = 0x04){
+		if(push == 0x04){
 			while(push == 0x04){}
 		breakHS = 1;
 		}
 	}
-}
+}/*
 

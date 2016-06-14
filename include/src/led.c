@@ -14,10 +14,11 @@ void LEDinit(){
 
 void LEDsetString(char * stringin){	
 	int i,j,k;
+	
 	for(k=0;k<strlen(stringin);k++){
 		string[k]=stringin[k];
 	}
-
+string[k+1]='\0';
 	for(i=0;i<5;i++){
 		for(j=0;j<5;j++){
 			buffer[i][j]=character_data[string[i]-32][j];
