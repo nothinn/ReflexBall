@@ -30,22 +30,22 @@ string[k+1]='\0';
 
 
 void led(char a){
-static char clk;
-PEDD=0x00;
-PEADDR=0;
-if(clk==0){ //klokke og colonne
-PEOUT=0x8F;
-clk=1;
-}
-else{
-PEOUT=0x0F;
-clk=0;
-}
-//data til rækker
-PGDD=0x00;
-PGADDR=0;
-PGOUT=a&0x7F;
-
+	static char clk;
+	PEDD=0x00;
+	PEADDR=0;
+	if(clk==0){ //klokke og colonne
+		PEOUT=0x8F;
+		clk=1;
+	}
+	else{
+		PEOUT=0x0F;
+		clk=0;
+	}
+	//data til rækker
+	PGDD=0x00;
+	PGADDR=0;
+	PGOUT=a&0x7F;
+	
 
 }
 
