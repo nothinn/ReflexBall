@@ -9,68 +9,51 @@
 #include "hardware.h"
 #include "menu.h"
 #include "draw.h"
-#define FIX14_SHIFT 14
-#define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
-#define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
 
-DrawHS(){}
-
-
-void menu(char * TILSTAND){
+void menu(){
 	char push;
 	char menuNr = 1;
-	char breakmenu = 0;
-
-
-
-
+	char i;
+	static int highscore[5];
+	color(2,0);
 	clrscr();
-	while(breakmenu != 1){
-	drawMenu(menuNr);
-	push = readkey();
-printf("%d,%d",push,menuNr);
-		if(push == 0x01){
-			//while(push == 0x01){}
+	for(i = 0; i < 5; i++){
+		highscore[i]=0;
+	}
+
+	LEDsetString("Play ReflexBall now<<<<<");	
+	while(2!= 1){
+		drawMenu(menuNr);
+		push = readkey(0);
+		
+		if(push <4 && push>0){
 			if(menuNr < 3){
 			menuNr++;
 			}
-		}else if(push == 0x02){
-		//	while(push == 0x02){}
+		}else if(push >3){
 			if(menuNr > 1){
 			menuNr--;
 			}
-		}else if(push == 0x04){
-		//	while(push == 0x04){}
+		}
+	
+		if(readkey(1)==1){
 			if(menuNr == 1){
-				*TILSTAND = 1;
-			
-				breakmenu=1;
-				printf("fukkkkkkkkkkkkkkkkkk");
-			}else if(menuNr == 2){
-				//tilstand = spil2;
-					breakmenu=1;
-					printf("fukkkkkkkkkkkkkkkkkk");
+				spil(highscore);
+				while(readkey(0)==1){}
+				clrscr();
+			}else if(menuNr == 2){	
 			}else if(menuNr == 3){
-			
-				DrawHS();	
-					printf("fukkkkkkkkkkkkkkkkkk");
+				highScore(highscore);	
 			}
 		}
 	}
 }
 
-/*
-void highScore(){
-	char push;
-	char breakHS = 0;
-	DrawHS();
+void highScore(int * highscore){
 	clrscr();
-	while(breakHS != 1){
-		push = readkey();
-		if(push == 0x04){
-			while(push == 0x04){}
-		breakHS = 1;
-		}
-	}
-}/*
+	drawHS(highscore);
+	while(readkey(1)==1){}
+	while(readkey(1)==0){}
+   	clrscr();
+}
 

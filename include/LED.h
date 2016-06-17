@@ -5,7 +5,7 @@
 
 void LEDinit();
 void LEDsetString(char stringin[]);
-void LEDupdate();
+void LEDupdate(char valg);
 
 #endif /*! _LED_H_ */
 //Lort

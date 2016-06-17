@@ -9,19 +9,20 @@
 
 void drawKlods(struct Klods *klods) {
 	int i;
+	int tema=1;
 	static char k;
 	fgcolor (klods->liv+k);
 //	reverse('y');
 if(klods->x%1024==0 &&klods->y%512==0 || klods->x%1024-512==0 &&klods->y%512!=0){k=8;}else{k=0;}
 if(klods->liv==0){
-k=0;}
-	fgcolor (klods->liv+k);
+	k=0;
+	tema=0;}
+	fgcolor (klods->liv+3*tema+k);
 	gotoxy(coordx(klods->x-256), coordy(klods->y-128));
 	for (i = 0; i < 16; i++) {
-		
 
 		if (i == 8) {
-			gotoxy(coordx(klods->x-256), coordy(klods->y-128)-1);
+			gotoxy(coordx(klods->x-256), coordy(klods->y-128)+1);
 		}
 		
 putchar(219);
@@ -33,21 +34,23 @@ putchar(219);
 void drawBall(struct Ball *ball) {
 	static struct Pos old;
 	reverse('n');
-bgcolor(0);
-	fgcolor(1);
+	bgcolor(0);
+
 
 //	if(oldx!=drawx || oldy!=drawy){ //drawBall();
-						fgcolor(4);						
-						gotoxy(old.x, old.y);
-					
-					printf(" ");
-					gotoxy(coordx(ball->x), coordy(ball->y));
-					printf("%c",220);
-						old.x = coordx(ball->x);
+	fgcolor(15);						
+	gotoxy(old.x, old.y);
+				
+	putchar(' ');
+	putchar(' ');
+	gotoxy(coordx(ball->x-32), coordy(ball->y));
+	putchar(219);
+	putchar(219);
+	old.x = coordx(ball->x-32);
 	old.y = coordy(ball->y);
 
 	gotoxy(200,45);
-	printf("%04d : %04d", ball->x, ball->y);
+
 	//	}
 
 
@@ -78,8 +81,20 @@ void drawStriker(struct Striker *striker) {
 //	}
 
 	//reverse('y');		go
-	gotoxy(coordx(striker->pos.x-(striker->size/2))-3, coordy(striker->pos.y));
-		printf("  %c%c%c%c%c%c%c%c%c%c%c%c  ",220,220,220,220,220,220,220,220,220,220,220,220);
+	gotoxy(coordx(striker->pos.x-(striker->size/2))-4, coordy(striker->pos.y));
+	for(i=0;i<22;i++){
+		if(i>4 &i<17){
+			putchar(220);
+		}else{
+			putchar(' ');
+		}
+	}
+	fgcolor(1);
+	gotoxy(3,59);
+	putchar(186);
+	gotoxy(134,59);
+	putchar(186);
+	//	printf("    %c%c%c%c%c%c%c%c%c%c%c%c    ",220,220,220,220,220,220,220,220,220,220,220,220,220,220);
 //	for (i = 0; i < 12; i++) {
 //		putchar(220);	}
 	//reverse('n');
@@ -165,7 +180,7 @@ void drawMenu(char valg) {
 
 	gotoxy(x, 28);
 	fgcolor(1);
-	if (valg == 1) { fgcolor(4); }
+	if (valg == 1) { fgcolor(6); }
 	//PLAY GAME
 	gotoxy(x, y++);
 	printf("______  _                   _____");
@@ -187,7 +202,7 @@ void drawMenu(char valg) {
 	y += 5;
 
 	fgcolor(1);
-	if (valg == 2) { fgcolor(4) ; }
+	if (valg == 2) { fgcolor(6) ; }
 	//2. PLAYER
 	gotoxy(x, y++);
 	printf(" _____     _____     ______  _");
@@ -210,7 +225,7 @@ void drawMenu(char valg) {
 	y += 5;
 
 	fgcolor(1);
-	if (valg == 3) { fgcolor(4); }
+	if (valg == 3) { fgcolor(6); }
 	//HighScore
 	gotoxy(x, y++);
 	printf(" _   _  _         _        _____");
@@ -231,7 +246,20 @@ void drawMenu(char valg) {
 
 }
 
-
+void drawGO(){
+	gotoxy(20, 30);
+	printf("  ________                        ________");
+	gotoxy(20, 31);
+	printf(" /  _____/_____    _____   ____   \_____  \___  __ ___________");
+	gotoxy(20, 32);
+	printf("/   \  ___\__  \  /     \_/ __ \   /   |   \  \/ // __ \_  __ \ ");
+	gotoxy(20, 33);
+	printf("\    \_\  \/ __ \|  Y Y  \  ___/  /    |    \   /\  ___/|  | \/ ");
+	gotoxy(20, 34);
+	printf(" \______  (____  /__|_|  /\___  > \_______  /\_/  \___  >__|");
+	gotoxy(20, 35);
+	printf("        \/     \/      \/     \/          \/          \/");
+}
 
 int coordx(int bigx) {
 	return (bigx >> 6)+5;
@@ -239,4 +267,152 @@ int coordx(int bigx) {
 
 int coordy(int bigy) {
 	return (bigy >> 7)+5;
+}
+void drawHS(int * highscore){
+	char tusi, hund, tier, ener, i, j;
+
+	for(i = 0; i < 5; i++){
+		tusi = *highscore/1000;
+		hund = (*highscore%1000)/100;
+ 		tier = (*highscore%100)/10;
+		ener = *highscore%10;
+		
+		gotoxy(22, 20+i*10);
+		drawNumber(tusi);
+		gotoxy(30, 20+i*10);
+		drawNumber(hund);
+		gotoxy(38, 20+i*10);
+		drawNumber(tier);
+		gotoxy(46, 20+i*10);
+		drawNumber(ener);
+
+		highscore++;
+
+		
+
+	}
+}
+
+void drawNumber(char number){
+	if(number == 0){
+		printf(" _____ ");
+		down(1); left(7);
+		printf("|  _  |");
+		down(1); left(7);
+		printf("| |/' |");
+		down(1); left(7);
+		printf("|  /| |");
+		down(1); left(7);
+		printf("\ |_/ /");
+		down(1); left(7);
+		printf(" \___/ ");
+	}else if(number == 1){
+		printf("  __   ");
+		down(1); left(7);
+		printf(" /  |  ");
+		down(1); left(7);
+		printf(" `| |  ");
+		down(1); left(7);
+		printf("  | |  ");
+		down(1); left(7);
+		printf(" _| |_ ");
+		down(1); left(7);
+		printf(" \___/ ");
+	}else if(number == 2){
+		printf(" _____ ");
+		down(1); left(7);
+		printf("/ __  \ ");
+		down(1); left(8);
+		printf("`' / /'");
+		down(1); left(7);
+		printf("  / /  ");
+		down(1); left(7);
+		printf("./ /___");
+		down(1); left(7);
+		printf("\_____/");
+	}else if(number == 3){
+		printf(" _____ ");
+		down(1); left(7);
+		printf("|____ |");
+		down(1); left(7);
+		printf("    / /");
+		down(1); left(7);
+		printf("    \ \ ");
+		down(1); left(8);
+		printf(".___/ /");
+		down(1); left(7);
+		printf("\____/ ");
+	}else if(number == 4){
+		printf("   ___ ");
+		down(1); left(7);
+		printf("  /   |");
+		down(1); left(7);
+		printf(" / /| |");
+		down(1); left(7);
+		printf("/ /_| |");
+		down(1); left(7);
+		printf("\___  |");
+		down(1); left(7);
+		printf("    |_/");
+	}else if(number == 5){
+		printf(" _____ ");
+		down(1); left(7);
+		printf("|  ___|");
+		down(1); left(7);
+		printf("|___ \ ");
+		down(1); left(7);
+		printf("    \ \ ");
+		down(1); left(8);
+		printf("/\__/ /");
+		down(1); left(7);
+		printf("\____/ ");
+	}else if(number == 6){
+		printf("  ____ ");
+		down(1); left(7);
+		printf(" / ___|");
+		down(1); left(7);
+		printf("/ /___ ");
+		down(1); left(7);
+		printf("| ___ \ ");
+		down(1); left(8);
+		printf("| \_/ |");
+		down(1); left(7);
+		printf("\_____/");
+	}else if(number == 7){
+		printf(" ______");
+		down(1); left(7);
+		printf("|___  /");
+		down(1); left(7);
+		printf("   / / ");
+		down(1); left(7);
+		printf("  / /  ");
+		down(1); left(7);
+		printf("./ /   ");
+		down(1); left(7);
+		printf("\_/    ");
+	}else if(number == 8){
+		printf(" _____ ");
+		down(1); left(7);
+		printf("|  _  |");
+		down(1); left(7);
+		printf(" \ V / ");
+		down(1); left(7);
+		printf(" / _ \ ");
+		down(1); left(7);
+		printf("| |_| |");
+		down(1); left(7);
+		printf("\_____/");
+	}else if(number == 9){
+		printf(" _____ ");
+		down(1); left(7);
+		printf("|  _  |");
+		down(1); left(7);
+		printf("| |_| |");
+		down(1); left(7);
+		printf("\____ |");
+		down(1); left(7);
+		printf(".___/ /");
+		down(1); left(7);
+		printf("\____/ ");
+	}
 }

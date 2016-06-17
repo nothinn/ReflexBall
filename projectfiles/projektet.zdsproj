@@ -306,6 +306,16 @@
 
 <!-- watch information -->
 <watch-elements>
+<watch-element expression="menuNr" />
+<watch-element expression="i" />
+<watch-element expression="j" />
+<watch-element expression="disty" />
+<watch-element expression="distx" />
+<watch-element expression="ball->speed.x" />
+<watch-element expression="ball->speed.y" />
+<watch-element expression="ball->y" />
+<watch-element expression="ball->x" />
+<watch-element expression="klodser[93]->x" />
 </watch-elements>
 
 <!-- breakpoint information -->

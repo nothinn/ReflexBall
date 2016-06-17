@@ -1,6 +1,7 @@
 #include <string.h>
 #include <eZ8.h>             // special encore constants, macros and flash routines
 #include <sio.h>  
+#include <stdlib.h>
 #include "ansi.h"
 #include "sin.h"
 #include "LED.h"
@@ -9,101 +10,113 @@
 #include "menu.h"
 #include "draw.h"
 #include "hardware.h"
-#define FIX14_SHIFT 14
-#define FIX14_MULT(a ,b) ((a)*(b) >> FIX14_SHIFT)
-#define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
 
+void spil(int * highscore){
+	char push;
+	int i,j,k;
+/*
+	char bane[10][17]={
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0},
+	{0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0},
+	{0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,1,1,0,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,0,0,1,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,0,0,1,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,0,0,1,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,0,1,1,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,1,1,0,0,0,1,0,0,1,1,0,1,1,0}};
+	char bane2[7][17]={
+	{0,1,1,1,0,0,0,0,1,0,0,0,1,1,1,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0},
+	{0,0,0,1,1,1,1,0,0,0,1,1,1,1,0,0,0},
+	{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+	{0,0,0,1,1,1,1,0,0,0,1,1,1,1,0,0,0},
+	{0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0}};*/
 
-
-//void kollision(struct Ball * ball, struct Striker * striker);
-
-
-//Test test altså ikke koden!
-
-void runStriker(struct Striker * striker,char push, struct Ball * ball){
-	char i;
-	push = readkey();
-
-		
-
-		
-	if(push == 0x01){
-		if(striker->pos.x+striker->size/2 < 8064){
-			striker->pos.x += 128;
-		}
-	}else if(push == 0x02){
-		if(striker->pos.x-striker->size/2 > 128){	
-			striker->pos.x -= 128;
-		}
-	}
-	else if(push == 0x04 && ball->speed.x==0 && ball->speed.y==0){
-		ball->speed.y=-127;
-	}
-				
-	
-	
-		
-		
-
-}
-
-
-void spil(char  * TILSTAND){
-	char push, i,j;
- struct Striker striker;
-	char frame;
-
+struct Striker striker;
+char frame;
+int  score;
 struct Ball ball;
-
+char ledScore[30] = " Congratz your score was: ";
 int oldx;
 int oldy;
 int drawx;
 int drawy;
-char indexklods;
+int test;
+int indexklods=-1;
 static char oldindex;
-struct Klods klodser[7][17];
+struct Klods klodser[17][17];
 clrscr();
-window(3,4,134,69,"Reflexball",1);
-ball.x;
-ball.y;
+LEDupdate(2);
+window(3,4,134,65,"Reflexball",1);
+ball.x=0;
+ball.y=0;
 ball.speed.x=0;
 ball.speed.y=0;
-ball.liv=3;
-
-	
-	
-	striker.pos.x=5000;
-	striker.pos.y=7000;
-	striker.size=768;
-	push = 0x00;
-for(j=0;j<7;j++){
+ball.liv=3;	
+striker.pos.x=5000;
+striker.pos.y=7000;
+striker.size=768;
+push = 0x00;
+for(j=0;j<17;j++){
 for(i=0;i<17;i++){
-if(i==0 || i==16 || j==0 ||j==6){
-	klodser[j][i].liv=0;
+if(i==0 || i==16 || j==0 ||j>10){
+
+klodser[j][i].liv=0;
 }else{
-klodser[j][i].liv=3;
+/*if(j<10){
+	klodser[j][i].liv=bane[j][i];
+	}else{
+		klodser[j][i].liv=bane2[j-10][i];
+	
+	}*/
+
+klodser[j][i].liv= rand() % 4;
+/*if(j<10){
+	
+	klodser[j][i].liv=bane[j][i];
+	}else{
+//	klodser[j][i].liv=bane2[j-10][i];
+	}*/
+/*
+for(k=17;k<17*17;k++){
+if(k<256){
+	klodser[k/17][k%17].liv=bane[k];}
+	else{
+klodser[k/17][k%17].liv=bane2[k-255];
+	}
+}*/
+
+
+
+
 }
 klodser[j][i].y=768+j*256;
 klodser[j][i].x=i*(512);
 }
+//klodser[5][6].liv=0;
 for(i=1;i<16;i++){
 drawKlods(&klodser[j][i]);
 }
 }
 drawLife(ball.liv);
+score = 0;
 	while(ball.liv>0){
 	//clrscr();		
-		if(frame==0){ //beregning
-			
-			ballupdate(&ball,&drawx,&drawy);
+		if(frame<2){ //beregning
 			runStriker(&striker, push, &ball);
-			if(indexklods!=-1){
-			oldindex=indexklods;
-			}
-			indexklods =kollision(&ball,&striker, &klodser[0][0]);			
-			frame=1;
+			ballupdate(&ball,&drawx,&drawy);
+			
+			
+		
+			indexklods =kollision(&ball,&striker, &klodser[0][0], &score);
+		
+			
+			frame++;
 		}
-		else if(frame==1){ 
+		else if(frame==2){ 
 			if(tid.ms%40==0){ //tegning
 			//clrscr();	
 					if(oldx!=drawx || oldy!=drawy){ 
@@ -128,7 +141,7 @@ drawLife(ball.liv);
  drawStriker(&striker);
  
 				}	
-		 	    frame=2;
+		 	    frame=3;
 			}
 		
 		
@@ -140,13 +153,23 @@ drawLife(ball.liv);
 	}
 		
 	clrscr();
-	gotoxy(20,20);
-	printf("GAmeover");
-	
-	while(push == 0x00){
-		push = readkey();
+	drawGO();
+		updateHS(score, highscore);
+			LEDupdate(1);
+
+		ledScore[26]=0x30+score/1000;
+		ledScore[27]=0x30+score%1000/100;
+		ledScore[28]=0x30+score%100/10;
+		ledScore[29]=0x30+score%10;
+		ledScore[30]='\0';
+	LEDsetString(ledScore);
+
+while(readkey(1)==1){
 	}
-	*TILSTAND=0;
+while(readkey(1)==0){
+
+	}
+
 
 		
 
@@ -154,37 +177,92 @@ drawLife(ball.liv);
 	
 }
 
-char kollision(struct Ball * ball, struct Striker * striker,struct Klods * klodser){
+
+void runStriker(struct Striker * striker,int push, struct Ball * ball){
+	char i;
+	struct TVector v;
+	push = readkey(0);
+		gotoxy(25,25);
+	
+		
+	if(push < 4){
+		if(striker->pos.x+striker->size/2 < 8128){
+			striker->pos.x += 43*push;
+		}
+	}else {
+		if(striker->pos.x-striker->size/2 > 128){	
+			striker->pos.x -= 43*(push-3);
+		}
+	}
+	if(readkey(1)==1 && ball->speed.x==0 && ball->speed.y==0){
+	
+		ball->speed.x=16;
+		ball->speed.y=-126;
+		initVector(&v,0, -127);
+		rotate(&v, (rand()%50)-25);
+		ball->speed.y=(v.y>>14);
+	ball->speed.x=(v.x>>14);
+	}
+				
+	
+	
+		
+		
+
+}
+
+
+void initVector(struct TVector * v,long x, long y){
+v->x=x<<FIX14_SHIFT;
+v->y=y<<FIX14_SHIFT;
+}
+void rotate(struct TVector * v,int angle){
+long x=v->x;
+long y=v->y;
+v->x = FIX14_MULT(x, cos(angle)) - FIX14_MULT(y, sin(angle));
+v->y = FIX14_MULT(x, sin(angle)) + FIX14_MULT(y, cos(angle));
+}
+
+
+
+int kollision(struct Ball * ball, struct Striker * striker,struct Klods * klodser, int * score){
 int delta;	
-char i,j,a;
-char out =-1;
+int i,j;
+char a=0;
+char s[4];
+char tal=0;
+int out =-1;
 int r =striker->size/2;
 int vinkel,disty,distx;
 //int v;
 long x,y;
-static struct TVector  v;
+struct TVector  v;
 
 
-j=(ball->y-256)/256-1;
+j=(ball->y-384)/256-1;
 
-	if(j<6 && j>0){
+	if(j<16 && j>0){
 		for(i=j*17;i<17+j*17;i++){
 			
 			if(klodser[i].liv>0 && ball->x > klodser[i].x-256 && ball->x<klodser[i].x+256 ){
-				LEDsetString("Hallo");
+			tal+=1;
+			gotoxy(30,30);
+		
 			
-
+			
 			if(ball->speed.y <= 0){
-			disty=	(ball->speed.y*-1 / (klodser[i].y+128 - ball->y));
+				disty=	((ball->speed.y*-1)<<8 / (klodser[i].y+128 - ball->y));
 			}else{
-			disty=	(ball->speed.y / (ball->y - klodser[i].y - 128 ));
+				disty=	(ball->speed.y<<8 / (ball->y - klodser[i].y - 128 ));
 			}
 
 			if(ball->speed.x <= 0){
-			distx=	(ball->speed.x*-1 / (klodser[i].x+256 - ball->x));
+				distx=	((ball->speed.x*-1)<<8 / (klodser[i].x+256 - ball->x));
 			}else{
-				distx=	(ball->speed.x / (ball->x - klodser[i].x-256));
+				distx=	(ball->speed.x<<8 / (ball->x - klodser[i].x-256));
 			}
+			ball->x-=ball->speed.x;
+			ball->y-=ball->speed.y;
 			if(distx>disty){
 					if(ball->speed.x>0){
 						a=-1;
@@ -206,7 +284,7 @@ j=(ball->y-256)/256-1;
 						a=17;
 					}
 					if(klodser[i+a].liv>0){
-				
+						
 						ball->speed.x *= -1;
 					}else{
 					ball->speed.y *= -1;
@@ -214,40 +292,34 @@ j=(ball->y-256)/256-1;
 					}
 			}
 			klodser[i+a].liv--;
+			drawKlods(&klodser[i+a]);
+			if(klodser[i+a].liv==0){
+				*score += 5;
+			}else if(klodser[i+a].liv==1){
+				*score += 2;
+ 			}else if(klodser[i+a].liv==2){
+				*score += 1;
+			}
+		s[0]=0x30+*score/1000;
+		s[1]=0x30+*score%1000/100;
+	
+		s[2]=0x30+*score%100/10;
+		
+		s[3]=0x30+*score%10;
+		
+	LEDsetString(s);
+			
+			ball->x+=ball->speed.x;
+			ball->y+=ball->speed.y;
+
 			out=i+a;
-/*
-				if(ball->speed.y <= 0 && ball->speed.x <= 0){
-					if((ball->speed.x*-1 / (klodser[i].x+256 - ball->x)) > (ball->speed.y*-1 / (klodser[i].y+128 - ball->y))){
-								ball->speed.x *= -1;
-					}else{					
-						ball->speed.y *= -1;
-					}
-				}else if(ball->speed.y <= 0 && ball->speed.x >= 0){
-					if((ball->speed.x / (ball->x - klodser[i].x-256)) > (ball->speed.y*-1 / (klodser[i].y+128 - ball->y))){
-						ball->speed.x *= -1;
-					}else{
-						ball->speed.y *= -1;
-					}
-			
-				}else if(ball->speed.y >= 0 && ball->speed.x <= 0){
-					if((ball->speed.x*-1 / (klodser[i].x+256 - ball->x)) > (ball->speed.y / (ball->y - klodser[i].y - 128 ))){
-						ball->speed.x *= -1;
-					}else{
-						ball->speed.y *= -1;
-					}
-			
-				}else if(ball->speed.y >= 0 && ball->speed.x >= 0){
-					if((ball->speed.x / (ball->x - klodser[i].x-256)) > (ball->speed.y / (ball->y - klodser[i].y - 128 ))){
-						ball->speed.x *= -1;
-					}else{
-						ball->speed.y *= -1;
-					}
-				}
-	*/	
 				
-			
+
 		}
 		
+
+
+
 	}
 
 }
@@ -291,9 +363,19 @@ vinkel=-32;
 		ball->speed.y=-ball->speed.y;
 	
 		initVector(&v,ball->speed.x, ball->speed.y);
-			rotate(&v,delta*32/r);
+		rotate(&v,delta*32/r);
 		ball->speed.y=(v.y>>14);
 	ball->speed.x=(v.x>>14);
+		buzz(); //vibrere når bolden rammer
+
+	if(ball->speed.y > -32){  	//sikre at man ikke roterer for meget
+		ball->speed.y = -32;
+		if(ball->speed.x < 0){
+			ball->speed.x = -123;
+		}else{
+			ball->speed.x = 123;
+		}
+	}		
 //	gotoxy(10,10);
 //	printf(" %d ",delta*32/r);
 //v=cos(ball->speed.y/ball->speed.x);
@@ -323,8 +405,8 @@ rotate(&hej,200);
 	
 	
 	}
-	if(ball->y>8000 || (ball->speed.y==0 && ball->speed.x==0)){
-		if(ball->y>8000){
+	if(ball->y>7500 || (ball->speed.y==0 && ball->speed.x==0)){
+		if(ball->y>7500){
 			ball->liv--;
 			drawLife(ball->liv);
 		}
@@ -338,7 +420,7 @@ rotate(&hej,200);
 
 
 	return out;
-
+	
 }
 
 
@@ -348,10 +430,12 @@ void ballupdate(struct Ball * ball,int * drawx, int * drawy){
 if((ball->x<128&&ball->speed.x<0) || (ball->x>8064&&ball->speed.x>0)){
 				//ball->angle=256-ball->angle;
 				ball->speed.x=-ball->speed.x;
+					
 			}
 			if((ball->y<128&&ball->speed.y<0) || (ball->y>8192&&ball->speed.y>0)){
 			//ball->angle=256-ball->angle;
 				ball->speed.y=-ball->speed.y;
+					
 			}	
 		
 
@@ -362,4 +446,17 @@ if((ball->x<128&&ball->speed.x<0) || (ball->x>8064&&ball->speed.x>0)){
 			*drawx=4+(ball->x>>6);
 			*drawy=5+(ball->y>>7);
 
+}
+void updateHS(int score, int * highscore){
+	char i;
+	int temp=0;
+	
+	for(i = 0; i < 5; i++){
+    	if(score > *highscore){
+		temp=*highscore;
+			*highscore = score;
+			score=temp;
+		}
+	   highscore++;
+	}
 }

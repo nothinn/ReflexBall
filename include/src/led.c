@@ -27,12 +27,35 @@ string[k+1]='\0';
 	}
 }
 
-void LEDupdate(){
+
+
+void led(char a){
+static char clk;
+PEDD=0x00;
+PEADDR=0;
+if(clk==0){ //klokke og colonne
+PEOUT=0x8F;
+clk=1;
+}
+else{
+PEOUT=0x0F;
+clk=0;
+}
+//data til rækker
+PGDD=0x00;
+PGADDR=0;
+PGOUT=a&0x7F;
+
+
+}
+
+void LEDupdate(char valg){
 	static char kolon;
 	static char disp;
 	static char index;
 	static char count;
 	static char stal;
+	static char mode;
 	char i,j;
 	
 		PGOUT=buffer[disp][kolon+index];
@@ -74,7 +97,16 @@ void LEDupdate(){
 			}
 			count=0;
 		}
-		count++;
+		if(valg==1){
+		mode=1;
+		}else if(valg==2){
+		mode=2;
+		}
+		if(mode==1){
+			count++;
+		}else if (mode==2){
+			index=0;
+		}
 }
 
 

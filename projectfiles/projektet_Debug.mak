@@ -89,26 +89,8 @@ C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\zs
 
 C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\main.obj :  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\main.c  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDIO.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STRING.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\defines.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\dmadefs.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\ez8.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\gpio.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\SIO.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uart.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uartdefs.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\LED.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\ansi.h  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\hardware.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\main.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\menu.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\sin.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\spil.h
+            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\menu.h
 	 $(CC)  $(CFLAGS) C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\main.c
 
 C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\ansi.obj :  \
@@ -181,6 +163,7 @@ C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\sp
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDIO.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
+            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDLIB.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STRING.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\defines.h  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\dmadefs.h  \

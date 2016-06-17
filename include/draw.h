@@ -8,7 +8,9 @@ void drawStriker(struct Striker *striker);
 void drawLife(char i);
 void drawWindow();
 void drawMenu(char valg);
+void drawGO();
 int coordx(int bigx);
 int coordy(int bigy);
-
+void drawHS(int * highscore);
+void drawNumber(char number);
 #endif
