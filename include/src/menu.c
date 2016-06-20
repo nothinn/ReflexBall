@@ -1,6 +1,3 @@
-#include <string.h>
-#include <eZ8.h>             // special encore constants, macros and flash routines
-#include <sio.h>  
 #include "ansi.h"
 #include "sin.h"
 #include "LED.h"
@@ -38,22 +35,20 @@ void menu(){
 	
 		if(readkey(1)==1){
 			if(menuNr == 1){
-				spil(highscore);
+				spil(highscore,1);
 				while(readkey(0)==1){}
-				clrscr();
-			}else if(menuNr == 2){	
+			}else if(menuNr == 2 &&highscore[0]>70){
+				spil(highscore,2);
+				while(readkey(0)==1){}
 			}else if(menuNr == 3){
-				highScore(highscore);	
+					drawHS(highscore);
+				while(readkey(1)==1){}
+				while(readkey(1)==0){}	
 			}
+			clrscr();
 		}
 	}
 }
 
-void highScore(int * highscore){
-	clrscr();
-	drawHS(highscore);
-	while(readkey(1)==1){}
-	while(readkey(1)==0){}
-   	clrscr();
-}
+
 

@@ -1,11 +1,8 @@
 #include <eZ8.h>             // special encore constants, macros and flash routines
 #include <sio.h>             // special encore serial i/o routines
 #include <string.h>
-
 #define ESC 0x1B
 
-
-//Lort
 void fgcolor(int foreground) {
 
 /*  Value      foreground     Value     foreground
@@ -104,18 +101,13 @@ void normal(){
 	printf("%c[0;22m",ESC);
 }
 
-
 void window(int x1, int y1, int x2, int y2, char * c,int stil){
 	int length = strlen(c);
 	int i = 0;
 	char kanter[2][9] = {{218,180,195,191,179,192,196,217},{201,185,204,187,186,200,205,188}};
-
 	if (stil != 1){
 		stil = 0;
 	}
-
-
-	//color(2,5);
 	gotoxy(x1,y1);
 	printf("%c%c",kanter[stil][0],kanter[stil][1]);
 	reverse('y');
@@ -126,21 +118,18 @@ void window(int x1, int y1, int x2, int y2, char * c,int stil){
 	}
 	reverse('n');
 	printf("%c%c",kanter[stil][2],kanter[stil][3]);
-
 	for(i = y1+1; i < y2;i++){
 		gotoxy(x1,i);
 		printf("%c",kanter[stil][4]);
 		gotoxy(x2,i);
 		printf("%c",kanter[stil][4]);
 	}
-	
 	gotoxy(x1,y2);
 	printf("%c",kanter[stil][5]);
 	for (i = 0; i < x2-x1-1; i++){
 		printf("%c",kanter[stil][6]);
 	}
 	printf("%c\n",kanter[stil][7]);
-	
 	normal();
 }
 void up(int x){

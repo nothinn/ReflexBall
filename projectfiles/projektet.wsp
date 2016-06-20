@@ -816,5 +816,10 @@ WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAAADIPPPPAADIPPPPPPPPPPPPPPPPPPPPGAAAAAAA
 [WorkState_v1_1.ToolBarMgr]
 CoolLook=True
 LargeButtons=False
+ResourceID=0
+Style=0
 ToolTips=True
+TypeID=0
+WindowName=
+loating=False
 

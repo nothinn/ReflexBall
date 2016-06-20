@@ -117,7 +117,6 @@ C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\ha
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDIO.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STRING.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\defines.h  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\dmadefs.h  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\ez8.h  \
@@ -126,26 +125,16 @@ C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\ha
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uart.h  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uartdefs.h  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\LED.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\ansi.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\hardware.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\main.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\sin.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\spil.h
+            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\hardware.h
 	 $(CC)  $(CFLAGS) C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\hardware.c
 
 C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\led.obj :  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\led.c  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDIO.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STRING.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\defines.h  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\dmadefs.h  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\ez8.h  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\gpio.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\SIO.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uart.h  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uartdefs.h  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\charset.h
@@ -164,11 +153,7 @@ C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\sp
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDLIB.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STRING.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\defines.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\dmadefs.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\ez8.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\gpio.h  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\SIO.H  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uart.h  \
             C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uartdefs.h  \
@@ -176,27 +161,12 @@ C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\sp
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\ansi.h  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\draw.h  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\hardware.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\main.h  \
-            C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\menu.h  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\sin.h  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\spil.h
 	 $(CC)  $(CFLAGS) C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\spil.c
 
 C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\PROJEC~1\menu.obj :  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\src\menu.c  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDIO.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STRING.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\defines.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\dmadefs.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\ez8.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\gpio.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\SIO.H  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uart.h  \
-            C:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uartdefs.h  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\LED.h  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\ansi.h  \
             C:\Users\Nikolaj\OneDrive\DTU\28900~1.SEM\3UGERS~1\Z8encore\REFLEX~1\include\draw.h  \

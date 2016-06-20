@@ -23,16 +23,17 @@ struct TVector{
 long x,y;
 };
 
-void runStriker(struct Striker * striker,int push, struct Ball * ball);
+void runStriker(struct Striker * striker, struct Ball * ball);
 void ballupdate(struct Ball * ball, int * drawx, int * drawy);
-void spil( int * score);
+void spil( int * score,char bane);
+void pointtoLED(int score);
 
 
 void initVector(struct TVector * v,long x, long y);
 
 void rotate(struct TVector * v,int angle);
 
-int kollision(struct Ball * ball, struct Striker * striker,struct Klods * klodser, int *score);
+void kollision(struct Ball * ball, struct Striker * striker,struct Klods * klodser, int *score);
 void updateHS(int score, int * highscore);
 
 #define FIX14_SHIFT 14
@@ -40,4 +41,3 @@ void updateHS(int score, int * highscore);
 #define FIX14_DIV(a,b) (((a) << FIX14_SHIFT) / (b))
 
 #endif /*! _SPIL_H_ */
-//Lort
